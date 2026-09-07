@@ -2,25 +2,59 @@
 <html lang="es">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quién se va · Argentina 2026</title>
+<title>Quién se va · Aldosivi Guapo y Varón</title>
 <style>
-:root{--navy:#07152b;--blue:#1669cf;--line:#dbe1e8;--muted:#6b7788;--green:#12a94f;--gold:#d99400;--red:#e32932;--bg:#061225}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#172334;font-family:Arial,Helvetica,sans-serif}.wrap{width:min(1220px,calc(100% - 18px));margin:auto}
-header{background:#fff;border-radius:0 0 11px 11px;padding:18px 0 14px}.brand{font-size:27px;font-weight:800;color:var(--navy)}.sub{font-size:12px;color:var(--muted);margin-top:4px}
-.notice{margin-top:12px;background:#edf5ff;border-left:4px solid #4385ef;padding:10px 12px;font-size:12px;line-height:1.45}.notice b{color:#102a4c}
-.toolbar{margin:12px 0;background:#fff;border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}.status{font-size:11px;color:var(--muted)}.actions button{border:0;border-radius:6px;padding:8px 11px;font-weight:800;cursor:pointer}.sync{background:#e7edf6;color:#18314f}.reset{background:#1669cf;color:#fff}.live{display:inline-flex;align-items:center;gap:6px;margin-left:8px;color:#0b9443;font-weight:800}.dot{width:7px;height:7px;border-radius:50%;background:#13ae52}
-h2{color:#fff;font-size:19px;margin:14px 0 10px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.club{background:#fff;border:1px solid #cfd7e2;border-radius:10px;padding:12px}.clubHead{display:flex;align-items:center;gap:9px;padding-bottom:9px;border-bottom:1px solid #edf0f4}.logo{width:39px;height:39px;object-fit:contain}.clubName{font-weight:800;font-size:17px}.pts{margin-left:auto;color:var(--blue);font-weight:900;font-size:21px}.delta{font-size:10px;color:var(--muted);margin-left:3px}
-.match{padding:9px 0;border-bottom:1px solid #eef1f5}.match:last-child{border-bottom:0}.line{display:flex;align-items:center;gap:6px;font-size:12px;margin-bottom:6px}.round{font-weight:800;color:#546274}.venue{font-size:9px;color:#327bd0;background:#eaf2ff;border-radius:4px;padding:2px 4px;font-weight:900}.opp{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.date{margin-left:auto;color:#8b96a4;font-size:9px}.pick{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}.pick button{height:28px;border:0;border-radius:5px;background:#e7e9ee;color:#26364a;font-weight:900;cursor:pointer}.pick button:disabled{opacity:.75;cursor:default}.pick .v.on{background:var(--green);color:#fff}.pick .e.on{background:var(--gold);color:#fff}.pick .d.on{background:var(--red);color:#fff}
+:root{--navy:#07152b;--blue:#1669cf;--line:#dbe1e8;--muted:#6b7788;--green:#0b6e2c;--green-dark:#063d18;--gold:#ffd400;--red:#e32932;--bg:#061225}
+*{box-sizing:border-box}
+body{margin:0;color:#172334;font-family:Arial,Helvetica,sans-serif;background:#04220f url('hinchada.jpg') center 22%/cover no-repeat fixed}
+body::before{content:"";position:fixed;inset:0;background:linear-gradient(180deg,rgba(4,20,10,.86),rgba(4,20,10,.93) 260px,rgba(4,20,10,.93));z-index:-1}
+.wrap{width:min(1220px,calc(100% - 18px));margin:auto}
+
+header{background:linear-gradient(180deg,#0d7a30,var(--green-dark));border-bottom:5px solid var(--gold);border-radius:0 0 11px 11px;padding:16px 0 14px;box-shadow:0 4px 18px rgba(0,0,0,.35)}
+.headRow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.headRow img.crest{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+.brand{font-size:25px;font-weight:900;color:#fff;line-height:1.15}
+.brand span{color:var(--gold)}
+.sub{font-size:11.5px;color:#cfe9d6;margin-top:3px}
+.social{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.social a{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);border:1px solid rgba(255,212,0,.55);color:#fff;text-decoration:none;font-size:11px;font-weight:800;padding:6px 10px;border-radius:20px;transition:background .15s}
+.social a:hover{background:rgba(255,212,0,.25)}
+.social a b{color:var(--gold)}
+.notice{margin-top:12px;background:rgba(255,255,255,.94);border-left:4px solid var(--green);padding:10px 12px;font-size:12px;line-height:1.45;border-radius:6px}.notice b{color:#0b3d1e}
+
+.toolbar{margin:12px 0;background:rgba(255,255,255,.95);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}.status{font-size:11px;color:var(--muted)}.actions button{border:0;border-radius:6px;padding:8px 11px;font-weight:800;cursor:pointer}.sync{background:#e2f3e6;color:#0b3d1e}.reset{background:var(--green);color:#fff}.live{display:inline-flex;align-items:center;gap:6px;margin-left:8px;color:#0b9443;font-weight:800}.dot{width:7px;height:7px;border-radius:50%;background:#13ae52}
+h2{color:#fff;font-size:19px;margin:16px 0 10px;text-shadow:0 2px 6px rgba(0,0,0,.6)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.club{background:rgba(255,255,255,.96);border:1px solid var(--green);border-radius:10px;padding:12px}.clubHead{display:flex;align-items:center;gap:9px;padding-bottom:9px;border-bottom:1px solid #edf0f4}.logo{width:39px;height:39px;object-fit:contain}.clubName{font-weight:800;font-size:17px}.pts{margin-left:auto;color:var(--green);font-weight:900;font-size:21px}.delta{font-size:10px;color:var(--muted);margin-left:3px}
+.match{padding:9px 0;border-bottom:1px solid #eef1f5}.match:last-child{border-bottom:0}.line{display:flex;align-items:center;gap:6px;font-size:12px;margin-bottom:6px}.round{font-weight:800;color:#546274}.venue{font-size:9px;color:#0b6e2c;background:#e2f3e6;border-radius:4px;padding:2px 4px;font-weight:900}.opp{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.date{margin-left:auto;color:#8b96a4;font-size:9px}.pick{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}.pick button{height:28px;border:0;border-radius:5px;background:#e7e9ee;color:#26364a;font-weight:900;cursor:pointer}.pick button:disabled{opacity:.75;cursor:default}.pick .v.on{background:var(--green);color:#fff}.pick .e.on{background:var(--gold);color:#4a3c00}.pick .d.on{background:var(--red);color:#fff}
 .actual{font-size:10px;background:#eef7f1;color:#0b9344;border-radius:4px;padding:3px 5px;font-weight:800;margin-left:auto}
-.results{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.result{background:#fff;border-radius:10px;padding:13px;border:1px solid var(--line)}.result small{font-size:9px;text-transform:uppercase;font-weight:800;color:var(--muted)}.result b{display:block;font-size:19px;margin-top:5px}.desc{border-color:#ff6267;background:#fff7f7}.desc b{color:#bd1d25}
-.tables{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}.box{background:#fff;border-radius:10px;overflow:hidden}.title{font-size:18px;font-weight:800;padding:13px 14px;border-bottom:1px solid var(--line)}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:11px}th,td{padding:8px 9px;border-bottom:1px solid #edf0f4;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}th{font-size:9px;text-transform:uppercase;color:#758296}tr.focus{background:#f4f8fd}tr.desc{background:#ffe4e6}.miniLogo{width:22px;height:22px;object-fit:contain;vertical-align:middle;margin-right:5px}.tag{background:#e32a35;color:#fff;padding:2px 4px;border-radius:3px;font-size:8px;font-weight:900;margin-left:4px}
-footer{color:#8ea0b4;font-size:9px;text-align:center;padding:15px 0 28px}
+.results{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.result{background:rgba(255,255,255,.96);border-radius:10px;padding:13px;border:1px solid var(--line)}.result small{font-size:9px;text-transform:uppercase;font-weight:800;color:var(--muted)}.result b{display:block;font-size:19px;margin-top:5px}.desc{border-color:#ff6267;background:#fff7f7}.desc b{color:#bd1d25}
+.tables{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}.box{background:rgba(255,255,255,.96);border-radius:10px;overflow:hidden;border:1px solid var(--green)}.title{font-size:18px;font-weight:800;padding:13px 14px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#e2f3e6,transparent)}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:11px}th,td{padding:8px 9px;border-bottom:1px solid #edf0f4;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}th{font-size:9px;text-transform:uppercase;color:#758296}tr.focus{background:#eefaf1}tr.desc{background:#ffe4e6}.miniLogo{width:22px;height:22px;object-fit:contain;vertical-align:middle;margin-right:5px}.tag{background:#e32a35;color:#fff;padding:2px 4px;border-radius:3px;font-size:8px;font-weight:900;margin-left:4px}
+
+.prayerSection{margin:26px auto 30px;max-width:340px}
+.prayerCard{background:rgba(255,255,255,.95);border:1px solid var(--gold);border-radius:10px;padding:14px 16px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.prayerCard svg{width:56px;height:56px;margin-bottom:6px}
+.prayerCard h3{margin:0 0 8px;font-size:12.5px;color:var(--green-dark);letter-spacing:.3px;text-transform:uppercase;font-weight:900}
+.prayerText{font-style:italic;font-family:"Brush Script MT","Segoe Script",cursive;font-size:11px;line-height:1.55;color:#2c2410;white-space:pre-line}
+.prayerCard .amen{margin-top:6px;font-weight:800;font-style:italic;font-size:11.5px;color:var(--green-dark)}
+
+footer{color:#dfe9e2;font-size:9px;text-align:center;padding:6px 0 28px}
 @media(max-width:950px){.cards{grid-template-columns:repeat(2,1fr)}.tables{grid-template-columns:1fr}}
-@media(max-width:620px){.cards{grid-template-columns:1fr}.results{grid-template-columns:1fr}.toolbar{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions button{width:49%}.clubName{font-size:16px}}
+@media(max-width:620px){.cards{grid-template-columns:1fr}.results{grid-template-columns:1fr}.toolbar{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions button{width:49%}.clubName{font-size:16px}.social{margin-left:0;width:100%}}
 </style>
 </head>
 <body>
-<header><div class="wrap"><div class="brand">Quién se va · 2026</div><div class="sub">Simulador de descenso · Liga Profesional Argentina</div>
+<header><div class="wrap">
+<div class="headRow">
+<img class="crest" src="logo-aldosivi.png" alt="Escudo Aldosivi Guapo y Varón">
+<div>
+<div class="brand">Quién se va · <span>2026</span></div>
+<div class="sub">Simulador de descenso · Liga Profesional Argentina — hinchada de Aldosivi</div>
+</div>
+<div class="social">
+<a href="https://x.com/AldosiviGuapo" target="_blank" rel="noopener">𝕏 <b>@AldosiviGuapo</b></a>
+<a href="https://instagram.com/AldosiviGuapoyVaron" target="_blank" rel="noopener">📸 <b>@AldosiviGuapoyVaron</b></a>
+<a href="https://tiktok.com/@AldosiviGuapoyVaron" target="_blank" rel="noopener">🎵 <b>@AldosiviGuapoyVaron</b></a>
+</div>
+</div>
 <div class="notice"><b>Descensos:</b> 1 por la última posición de promedios y 1 por la última posición de la Tabla Anual. <b>Si el último de ambas tablas es el mismo club, el segundo descenso corresponde al anteúltimo de la Tabla Anual.</b></div>
 </div></header>
 <main class="wrap">
@@ -29,6 +63,25 @@ footer{color:#8ea0b4;font-size:9px;text-align:center;padding:15px 0 28px}
 <section class="results"><div class="result desc"><small>Descendería por Tabla Anual</small><b id="annualRel">—</b></div><div class="result desc"><small>Descendería por Promedios</small><b id="avgRel">—</b></div></section>
 <section class="tables"><div class="box"><div class="title">Tabla Anual</div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>PTS</th><th>Δ</th></tr></thead><tbody id="annual"></tbody></table></div></div>
 <div class="box"><div class="title">Tabla de Promedios</div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>Pts</th><th>PJ</th><th>Prom.</th></tr></thead><tbody id="avg"></tbody></table></div></div></section>
+
+<section class="prayerSection"><div class="prayerCard">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<circle cx="50" cy="50" r="47" fill="#0b6e2c" stroke="#ffd400" stroke-width="3"/>
+<path d="M20 70 Q50 20 80 70" fill="none" stroke="#ffd400" stroke-width="2" opacity=".5"/>
+<line x1="35" y1="30" x2="60" y2="70" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+<line x1="35" y1="30" x2="20" y2="45" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+<circle cx="35" cy="30" r="6" fill="#ffffff"/>
+<path d="M55 78 q10 -6 18 -18 q4 -8 -2 -12 q-6 -3 -10 4 q-8 12 -14 20 Z" fill="#ffd400" stroke="#7a5c00" stroke-width="1"/>
+<path d="M60 82 L52 66" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+<h3>Oración a San Jorge</h3>
+<div class="prayerText">Andaré vestido y armado con las armas de San Jorge para que mis enemigos, teniendo pies, no me alcancen, teniendo manos no me atrapen, teniendo ojos no me vean, y ni con el pensamiento ellos puedan hacerme mal.
+Armas de fuego mi cuerpo no alcanzarán, cuchillos y lanzas se quiebren sin mi cuerpo tocar, cuerdas y corrientes se rompan sin mi cuerpo atar.
+Jesucristo, me proteja y defienda con el poder de su Santa y Divina gracia, Virgen de Nazaret, me cubra con su manto sagrado y divino, protegiéndome en todos mis dolores y aflicciones, y Dios, con su divina misericordia y gran poder, sea mi defensor contra las maldades o persecuciones de mis enemigos.
+Glorioso San Jorge, en nombre de Dios, extiéndeme tu escudo y tus poderosas armas, defendiéndome con tu fuerza y con tu grandeza, y que debajo de tí, mis enemigos queden humildes y sumisos a Tí. Así sea con el poder de Dios, de Jesús y del Divino Espíritu Santo. Gloria al Padre, al Hijo y al Espíritu Santo.</div>
+<div class="amen">Así sea. Amén. 🙏🏻<br>¡Qué San Jorge nos proteja siempre! Amén.</div>
+</div></section>
+
 <footer>Actualización automática mediante una fuente pública de resultados. Si la fuente cambia su API, se conserva el snapshot y se muestra el estado de conexión. Los escudos se cargan desde el CDN de TyC Sports.</footer>
 </main>
 <script>
