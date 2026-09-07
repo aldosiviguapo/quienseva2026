@@ -1,43 +1,139 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>¿Quién se va? · Simulador de Descenso 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quién se va · Simulador de descenso 2026</title>
+<meta name="description" content="Simulador de descenso de la Liga Profesional 2026">
+<style>
+:root{--navy:#071a33;--blue:#0b66d6;--light:#f3f6fa;--line:#dce2ea;--text:#172235;--muted:#64748b;--win:#18a957;--draw:#d79800;--loss:#e42a32;--redbg:#ffe5e7;--greenbg:#e9f8ef;--yellowbg:#fff5d9}
+*{box-sizing:border-box}body{margin:0;background:#071225;color:var(--text);font-family:Arial,Helvetica,sans-serif}.wrap{width:min(1200px,calc(100% - 28px));margin:auto}
+.top{background:#fff;padding:24px 0 16px;border-radius:0 0 12px 12px}.brand{font-size:28px;font-weight:800;color:var(--navy)}.subtitle{margin:5px 0 0;color:var(--muted);font-size:13px}.note{margin-top:16px;background:#edf5ff;border-left:4px solid #4285f4;padding:13px 15px;font-size:13px;line-height:1.5}.note b{color:var(--navy)}
+.main{padding:16px 0 30px}.toolbar{background:#fff;border-radius:12px;padding:13px 15px;display:flex;justify-content:space-between;align-items:center;gap:15px}.toolbar strong{font-size:13px}.btn{border:0;border-radius:7px;padding:9px 13px;font-weight:700;cursor:pointer}.btn.primary{background:#1669c9;color:#fff}.btn.secondary{background:#e8edf4;color:#17304c}.btn:hover{filter:brightness(.98)}
+h2{font-size:21px;margin:18px 0 11px;color:#fff}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.club{background:#fff;border-radius:10px;border:1px solid #cfd6df;padding:14px}.club-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}.crest{width:42px;height:42px;border-radius:10px;border:1px solid #d6dde6;display:grid;place-items:center;background:#fff;font-size:12px;font-weight:900;color:var(--navy);overflow:hidden}.crest img{width:36px;height:36px;object-fit:contain}.club-name{font-size:18px;font-weight:800}.club-points{margin-left:auto;font-size:20px;font-weight:900;color:var(--blue)}.match{padding:9px 0;border-top:1px solid #edf0f4}.match-line{display:flex;align-items:center;gap:7px;font-size:12px;margin-bottom:7px}.round{color:#44546a;font-weight:700}.venue{font-weight:800;color:#4a91e7;background:#eaf2ff;border-radius:5px;padding:2px 5px}.opp{color:#334155;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pick{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px}.pick button{height:30px;border:0;border-radius:5px;background:#e6e9ee;color:#22334a;font-weight:800;cursor:pointer}.pick button.v.active{background:var(--win);color:#fff}.pick button.e.active{background:var(--draw);color:#fff}.pick button.d.active{background:var(--loss);color:#fff}.match.shared{background:#fafbfc;border-radius:7px;padding:9px;margin-top:2px}
+.result-boxes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}.result{background:#fff;border-radius:12px;padding:15px;border:1px solid #d3dae3}.result small{display:block;color:var(--muted);font-weight:700;text-transform:uppercase;font-size:10px;letter-spacing:.06em}.result b{display:block;font-size:20px;margin-top:6px}.result.desc{border-color:#ff666b;background:#fff7f7}.result.desc b{color:#c51f29}.result.safe{border-color:#62cb88;background:#f7fff9}
+.tables{display:grid;grid-template-columns:1fr 1fr;gap:14px}.tablebox{background:#fff;border-radius:12px;overflow:hidden}.tabletitle{padding:15px 16px;border-bottom:1px solid var(--line);font-size:20px;font-weight:800}.tabletitle span{font-size:11px;color:var(--muted);font-weight:600;margin-left:7px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:10px 10px;border-bottom:1px solid #edf0f4;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}th{font-size:10px;color:#748396;text-transform:uppercase}tbody tr.desc{background:var(--redbg)}tbody tr.focus{background:#f5f9ff}.badge{font-size:10px;padding:3px 5px;border-radius:4px;background:#ff5d62;color:#fff;font-weight:800;margin-left:5px}.up{color:#10934c;font-weight:800}
+footer{color:#9aacbe;text-align:center;padding:20px 0 35px;font-size:11px}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.tables{grid-template-columns:1fr}}
+@media(max-width:620px){.wrap{width:calc(100% - 18px)}.cards{grid-template-columns:1fr}.result-boxes{grid-template-columns:1fr}.toolbar{align-items:flex-start;flex-direction:column}.club-name{font-size:17px}.club-points{font-size:18px}}
+</style>
 </head>
 <body>
-<header class="topbar"><div class="brand">¿QUIÉN SE VA? <small>2026</small></div><div class="sub">SIMULADOR DE DESCENSO · PRIMERA DIVISIÓN</div></header>
-<main class="container">
-<section class="intro">
-  <h1>Simulación de Resultados</h1>
-  <p>Elegí G / E / P en cada partido. Las tablas se actualizan automáticamente.</p>
-  <div class="notice"><b>Descenso:</b> último de la Tabla Anual + peor promedio. Si coinciden, se aplica el reglamento AFA. <b>Estado:</b> Fecha 8 casi finalizada; los partidos del 7/9 aún figuran como pendientes hasta su disputa.</div>
+<header class="top">
+<div class="wrap">
+<div class="brand">Quién se va · 2026</div>
+<div class="subtitle">Simulador de descenso · Liga Profesional Argentina</div>
+<div class="note"><b>Descensos:</b> 1 equipo por la última posición de promedios y 1 equipo por la última posición de la Tabla Anual. <b>Si el mismo club queda último en ambas, el segundo descenso pasa al anteúltimo de la Tabla Anual.</b> En caso de igualdad de puntos en una posición de descenso, corresponde desempate según el reglamento.</div>
+</div>
+</header>
+<main class="wrap main">
+<div class="toolbar"><strong id="progress">0 de 0 partidos pronosticados</strong><div><button class="btn secondary" id="random">🎲 Simular todo</button> <button class="btn primary" id="reset">↺ Reiniciar</button></div></div>
+
+<h2>Simulación de resultados</h2>
+<section class="cards" id="cards"></section>
+
+<section class="result-boxes">
+<div class="result desc"><small>Descendería por Tabla Anual</small><b id="relegAnnual">—</b><span id="annualReason"></span></div>
+<div class="result desc"><small>Descendería por Promedios</small><b id="relegAvg">—</b></div>
 </section>
 
-<section class="sim-card">
-  <div class="sim-head"><h2>Equipos en peligro</h2><button id="random" class="small-btn">🎲 Simular todo</button><button id="reset" class="small-btn">↺ Reiniciar</button></div>
-  <div id="cards" class="cards"></div>
-  <div class="progress-wrap"><span id="progressText"></span><div class="progress"><i id="progressBar"></i></div></div>
+<section class="tables">
+<div class="tablebox"><div class="tabletitle">Tabla Anual <span>proyección dinámica</span></div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>PTS</th><th>Δ</th></tr></thead><tbody id="annual"></tbody></table></div></div>
+<div class="tablebox"><div class="tabletitle">Tabla de Promedios <span>proyección dinámica</span></div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PTS</th><th>PJ</th><th>Prom.</th></tr></thead><tbody id="averages"></tbody></table></div></div>
 </section>
 
-<section class="results">
-  <div class="table-box">
-    <div class="table-title"><h2>Tabla Anual</h2><span id="annualBadge">Proyección</span></div>
-    <div class="table-scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>Pts</th><th>Estado</th></tr></thead><tbody id="annual"></tbody></table></div>
-  </div>
-  <div class="table-box">
-    <div class="table-title"><h2>Tabla de Promedios</h2><span>2024–2026</span></div>
-    <div class="table-scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>Pts</th><th>Prom.</th></tr></thead><tbody id="avg"></tbody></table></div>
-  </div>
-</section>
-
-<section class="bottom">
-  <div class="danger"><b>🔴 Descenso por Tabla Anual</b><strong id="annualDown">—</strong></div>
-  <div class="danger"><b>🔴 Descenso por Promedios</b><strong id="avgDown">—</strong></div>
-</section>
-<footer>Datos de referencia: situación posterior a los partidos de Fecha 8 ya disputados al 7/9/2026. Los dos partidos del lunes se incorporarán al cierre oficial. Herramienta recreativa.</footer>
+<footer>Snapshot inicial: 7/09/2026, antes de Barracas Central–Argentinos Juniors y Unión–Instituto. Datos de tablas tomados del estado publicado al 6/09/2026; fixture restante oficial LPF.</footer>
 </main>
-<script src="data.js"></script><script src="app.js"></script>
-</body></html>
+
+<script>
+const TEAMS=[{"id":"RIV","name":"Independiente Rivadavia","annual":45,"pjAnnual":23,"avgPts":134,"avgPJ":96},{"id":"ARG","name":"Argentinos Juniors","annual":45,"pjAnnual":23,"avgPts":158,"avgPJ":96},{"id":"VEL","name":"Vélez","annual":44,"pjAnnual":24,"avgPts":160,"avgPJ":97},{"id":"BOC","name":"Boca Juniors","annual":41,"pjAnnual":24,"avgPts":170,"avgPJ":97},{"id":"GLP","name":"Gimnasia LP","annual":41,"pjAnnual":24,"avgPts":127,"avgPJ":97},{"id":"ROS","name":"Rosario Central","annual":39,"pjAnnual":23,"avgPts":152,"avgPJ":96},{"id":"EST","name":"Estudiantes LP","annual":38,"pjAnnual":24,"avgPts":143,"avgPJ":97},{"id":"BEL","name":"Belgrano","annual":38,"pjAnnual":24,"avgPts":124,"avgPJ":97},{"id":"INS","name":"Instituto","annual":37,"pjAnnual":23,"avgPts":124,"avgPJ":96},{"id":"RIVP","name":"River Plate","annual":36,"pjAnnual":23,"avgPts":159,"avgPJ":96},{"id":"GDM","name":"Gimnasia Mendoza","annual":35,"pjAnnual":24,"avgPts":35,"avgPJ":24},{"id":"IND","name":"Independiente","annual":34,"pjAnnual":23,"avgPts":144,"avgPJ":96},{"id":"SAR","name":"Sarmiento","annual":34,"pjAnnual":24,"avgPts":104,"avgPJ":97},{"id":"DYJ","name":"Defensa y Justicia","annual":33,"pjAnnual":23,"avgPts":129,"avgPJ":96},{"id":"TIG","name":"Tigre","annual":32,"pjAnnual":24,"avgPts":120,"avgPJ":97},{"id":"HUR","name":"Huracán","annual":32,"pjAnnual":24,"avgPts":141,"avgPJ":97},{"id":"SLO","name":"San Lorenzo","annual":32,"pjAnnual":24,"avgPts":128,"avgPJ":97},{"id":"UNI","name":"Unión","annual":31,"pjAnnual":23,"avgPts":130,"avgPJ":96},{"id":"LAN","name":"Lanús","annual":31,"pjAnnual":23,"avgPts":140,"avgPJ":96},{"id":"TAL","name":"Talleres","annual":31,"pjAnnual":24,"avgPts":137,"avgPJ":97},{"id":"BAR","name":"Barracas Central","annual":31,"pjAnnual":23,"avgPts":129,"avgPJ":96},{"id":"RAC","name":"Racing Club","annual":26,"pjAnnual":23,"avgPts":149,"avgPJ":96},{"id":"NOB","name":"Newell's","annual":26,"pjAnnual":23,"avgPts":108,"avgPJ":96},{"id":"BAN","name":"Banfield","annual":25,"pjAnnual":24,"avgPts":101,"avgPJ":97},{"id":"PLA","name":"Platense","annual":25,"pjAnnual":24,"avgPts":117,"avgPJ":97},{"id":"TUC","name":"Atlético Tucumán","annual":24,"pjAnnual":23,"avgPts":108,"avgPJ":96},{"id":"CC","name":"Central Córdoba","annual":23,"pjAnnual":23,"avgPts":107,"avgPJ":96},{"id":"RIE","name":"Deportivo Riestra","annual":20,"pjAnnual":24,"avgPts":120,"avgPJ":97},{"id":"ALD","name":"Aldosivi","annual":13,"pjAnnual":24,"avgPts":46,"avgPJ":56},{"id":"ERC","name":"Estudiantes RC","annual":11,"pjAnnual":24,"avgPts":11,"avgPJ":24}];
+const FIXTURES=[{"id":"F9-INS-ERC","round":9,"home":"INS","away":"ERC","focus":"ERC","other":"INS"},{"id":"F9-BOC-CC","round":9,"home":"BOC","away":"CC","focus":"CC","other":"BOC"},{"id":"F9-RIE-LAN","round":9,"home":"RIE","away":"LAN","focus":"RIE","other":"LAN"},{"id":"F9-EST-PLA","round":9,"home":"EST","away":"PLA","focus":"PLA","other":"EST"},{"id":"F9-TUC-RIVP","round":9,"home":"TUC","away":"RIVP","focus":"TUC","other":"RIVP"},{"id":"F9-RIV-ALD","round":9,"home":"RIV","away":"ALD","focus":"ALD","other":"RIV"},{"id":"F9-BAN-BAR","round":9,"home":"BAN","away":"BAR","focus":"BAN","other":"BAR"},{"id":"F10-NOB-PLA","round":10,"home":"NOB","away":"PLA","focus":"PLA","other":"NOB"},{"id":"F10-GDM-RIE","round":10,"home":"GDM","away":"RIE","focus":"RIE","other":"GDM"},{"id":"F10-CC-DYJ","round":10,"home":"CC","away":"DYJ","focus":"CC","other":"DYJ"},{"id":"F10-BAN-GLP","round":10,"home":"BAN","away":"GLP","focus":"BAN","other":"GLP"},{"id":"F10-TUC-ALD","round":10,"home":"TUC","away":"ALD","focus":"TUC","other":"ALD"},{"id":"F10-ERC-BEL","round":10,"home":"ERC","away":"BEL","focus":"ERC","other":"BEL"},{"id":"F11-RIE-CC","round":11,"home":"RIE","away":"CC","focus":"RIE","other":"CC"},{"id":"F11-VEL-PLA","round":11,"home":"VEL","away":"PLA","focus":"PLA","other":"VEL"},{"id":"F11-RAC-ERC","round":11,"home":"RAC","away":"ERC","focus":"ERC","other":"RAC"},{"id":"F11-ALD-HUR","round":11,"home":"ALD","away":"HUR","focus":"ALD","other":"HUR"},{"id":"F11-BAR-TUC","round":11,"home":"BAR","away":"TUC","focus":"TUC","other":"BAR"},{"id":"F11-ROS-BAN","round":11,"home":"ROS","away":"BAN","focus":"BAN","other":"ROS"},{"id":"F12-EST-CC","round":12,"home":"EST","away":"CC","focus":"CC","other":"EST"},{"id":"F12-RIE-SLO","round":12,"home":"RIE","away":"SLO","focus":"RIE","other":"SLO"},{"id":"F12-BAN-TIG","round":12,"home":"BAN","away":"TIG","focus":"BAN","other":"TIG"},{"id":"F12-TUC-GLP","round":12,"home":"TUC","away":"GLP","focus":"TUC","other":"GLP"},{"id":"F12-SAR-ALD","round":12,"home":"SAR","away":"ALD","focus":"ALD","other":"SAR"},{"id":"F12-ERC-RIVP","round":12,"home":"ERC","away":"RIVP","focus":"ERC","other":"RIVP"},{"id":"F13-UNI-RIE","round":13,"home":"UNI","away":"RIE","focus":"RIE","other":"UNI"},{"id":"F13-CC-NOB","round":13,"home":"CC","away":"NOB","focus":"CC","other":"NOB"},{"id":"F13-LAN-PLA","round":13,"home":"LAN","away":"PLA","focus":"PLA","other":"LAN"},{"id":"F13-ALD-ERC","round":13,"home":"ALD","away":"ERC","focus":"ALD","other":"ERC"},{"id":"F13-ROS-TUC","round":13,"home":"ROS","away":"TUC","focus":"TUC","other":"ROS"},{"id":"F13-ARG-BAN","round":13,"home":"ARG","away":"BAN","focus":"BAN","other":"ARG"},{"id":"F14-GDM-PLA","round":14,"home":"GDM","away":"PLA","focus":"PLA","other":"GDM"},{"id":"F14-CC-VEL","round":14,"home":"CC","away":"VEL","focus":"CC","other":"VEL"},{"id":"F14-INS-RIE","round":14,"home":"INS","away":"RIE","focus":"RIE","other":"INS"},{"id":"F14-TIG-TUC","round":14,"home":"TIG","away":"TUC","focus":"TUC","other":"TIG"},{"id":"F14-ERC-BAR","round":14,"home":"ERC","away":"BAR","focus":"ERC","other":"BAR"},{"id":"F14-BEL-ALD","round":14,"home":"BEL","away":"ALD","focus":"ALD","other":"BEL"},{"id":"F15-RIE-TAL","round":15,"home":"RIE","away":"TAL","focus":"RIE","other":"TAL"},{"id":"F15-CC-PLA","round":15,"home":"CC","away":"PLA","focus":"CC","other":"PLA"},{"id":"F15-RAC-ALD","round":15,"home":"RAC","away":"ALD","focus":"ALD","other":"RAC"},{"id":"F15-GLP-ERC","round":15,"home":"GLP","away":"ERC","focus":"ERC","other":"GLP"},{"id":"F15-ARG-TUC","round":15,"home":"ARG","away":"TUC","focus":"TUC","other":"ARG"},{"id":"F15-RIV-BAN","round":15,"home":"RIV","away":"BAN","focus":"BAN","other":"RIV"},{"id":"F16-LAN-CC","round":16,"home":"LAN","away":"CC","focus":"CC","other":"LAN"},{"id":"F16-PLA-SLO","round":16,"home":"PLA","away":"SLO","focus":"PLA","other":"SLO"},{"id":"F16-RIE-IND","round":16,"home":"RIE","away":"IND","focus":"RIE","other":"IND"},{"id":"F16-TUC-BAN","round":16,"home":"TUC","away":"BAN","focus":"TUC","other":"BAN"},{"id":"F16-ERC-ROS","round":16,"home":"ERC","away":"ROS","focus":"ERC","other":"ROS"},{"id":"F16-RIVP-ALD","round":16,"home":"RIVP","away":"ALD","focus":"ALD","other":"RIVP"}];
+const FOCUS=["ALD","ERC","RIE","CC","PLA","TUC","BAN"];
+const T=Object.fromEntries(TEAMS.map(t=>[t.id,t]));
+const P={};
+const points={"V":3,"E":1,"D":0};
+function crest(t){
+  // The source site may change/disable crest hosts, so the initial badge is text-based.
+  // It still renders as a stable shield-like club marker with the team initials.
+  return `<div class="crest" aria-label="Escudo de ${t.name}">${t.id.slice(0,3)}</div>`;
+}
+function ptsForResult(r, perspectiveHome){
+  if(r==="E") return [1,1];
+  if(r==="V") return perspectiveHome?[3,0]:[0,3];
+  return perspectiveHome?[0,3]:[3,0];
+}
+function isShared(m){return FOCUS.includes(m.home)&&FOCUS.includes(m.away)}
+function getPredKey(m){return m.id}
+function current(){
+  return TEAMS.map(t=>({...t}));
+}
+function project(){
+  const a=current(), map=Object.fromEntries(a.map(t=>[t.id,t]));
+  for(const m of FIXTURES){
+    const r=P[m.id]; if(!r) continue;
+    const homeIsPerspective = m.focus===m.home;
+    const [hp,ap]=ptsForResult(r,homeIsPerspective);
+    map[m.home].annual+=hp; map[m.away].annual+=ap;
+    map[m.home].pjAnnual+=1; map[m.away].pjAnnual+=1;
+    map[m.home].avgPts+=hp; map[m.away].avgPts+=ap;
+    map[m.home].avgPJ+=1; map[m.away].avgPJ+=1;
+  }
+  return a;
+}
+function avg(t){return t.avgPJ?t.avgPts/t.avgPJ:0}
+function standings(){
+  const a=project();
+  const annual=[...a].sort((x,y)=>y.annual-x.annual||y.avgPts-x.avgPts);
+  const av=[...a].sort((x,y)=>avg(y)-avg(x)||y.avgPts-x.avgPts);
+  const lastAvg=av[av.length-1], lastAnnual=annual[annual.length-1], penAnnual=annual[annual.length-2];
+  const annualRel=lastAnnual.id===lastAvg.id?penAnnual:lastAnnual;
+  return {a,annual,av,lastAvg,lastAnnual,penAnnual,annualRel};
+}
+function renderCards(){
+  const grouped=Object.fromEntries(FOCUS.map(id=>[id,[]]));
+  FIXTURES.forEach(m=>{if(grouped[m.focus]) grouped[m.focus].push(m)});
+  document.querySelector("#cards").innerHTML=FOCUS.map(id=>{
+    const t=T[id]; const games=grouped[id]||[];
+    let projected=t.annual;
+    games.forEach(m=>{const r=P[m.id]; if(r) projected+=points[r]});
+    return `<article class="club"><div class="club-head">${crest(t)}<div class="club-name">${t.name}</div><div class="club-points">${projected}</div></div>
+      ${games.map(m=>{
+        const opp=T[m.other], r=P[m.id]||"";
+        const marker=m.home===id?"L":"V";
+        return `<div class="match ${isShared(m)?"shared":""}">
+          <div class="match-line"><span class="round">F${m.round}</span><span class="venue">${marker}</span><span class="opp">${opp.name}</span></div>
+          <div class="pick">
+            <button class="v ${r==="V"?"active":""}" onclick="setResult('${m.id}','V')">G</button>
+            <button class="e ${r==="E"?"active":""}" onclick="setResult('${m.id}','E')">E</button>
+            <button class="d ${r==="D"?"active":""}" onclick="setResult('${m.id}','D')">P</button>
+          </div>
+        </div>`
+      }).join("")}
+    </article>`
+  }).join("");
+}
+function renderTables(){
+  const s=standings(), {annual,av,lastAvg,annualRel}=s;
+  const done=Object.keys(P).filter(k=>P[k]).length;
+  document.querySelector("#progress").textContent=`${done} de ${FIXTURES.length} partidos pronosticados`;
+  document.querySelector("#relegAnnual").textContent=annualRel.name;
+  document.querySelector("#relegAvg").textContent=lastAvg.name;
+  document.querySelector("#annualReason").innerHTML=annualRel.id===lastAvg.id?"":"El último de la Anual coincide con Promedios; baja el 29.º.";
+  document.querySelector("#annual").innerHTML=annual.map((t,i)=>{
+    const d=t.annual-T[t.id].annual;
+    const desc=t.id===annualRel.id, focus=FOCUS.includes(t.id);
+    return `<tr class="${desc?"desc ":""}${focus?"focus":""}"><td>${i+1}</td><td><b>${t.name}</b>${desc?'<span class="badge">DESC</span>':""}</td><td>${t.pjAnnual}</td><td><b>${t.annual}</b></td><td class="${d>0?"up":""}">${d>0?"+"+d:"—"}</td></tr>`;
+  }).join("");
+  document.querySelector("#averages").innerHTML=av.map((t,i)=>{
+    const desc=t.id===lastAvg.id, focus=FOCUS.includes(t.id);
+    return `<tr class="${desc?"desc ":""}${focus?"focus":""}"><td>${i+1}</td><td><b>${t.name}</b>${desc?'<span class="badge">DESC</span>':""}</td><td>${t.avgPts}</td><td>${t.avgPJ}</td><td><b>${avg(t).toFixed(3)}</b></td></tr>`;
+  }).join("");
+}
+function render(){renderCards();renderTables();}
+window.setResult=(id,r)=>{P[id]=P[id]===r?"":r;render()};
+document.querySelector("#reset").onclick=()=>{Object.keys(P).forEach(k=>delete P[k]);render()};
+document.querySelector("#random").onclick=()=>{FIXTURES.forEach(m=>P[m.id]=["V","E","D"][Math.floor(Math.random()*3)]);render()};
+render();
+</script>
+</body>
+</html>
