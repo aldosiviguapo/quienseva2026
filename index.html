@@ -1,98 +1,43 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Simulador del Descenso · Argentina 2026</title>
-  <meta name="description" content="Simulador dinámico de descenso del fútbol argentino 2026">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>¿Quién se va? · Simulador de Descenso 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <div class="eyebrow">FÚTBOL ARGENTINO · 2026</div>
-      <h1>Simulador del <span>Descenso</span></h1>
-      <p>Elegí los resultados de los partidos restantes y mirá cómo cambia la pelea por la permanencia.</p>
-      <div class="status" id="dataStatus"></div>
-    </div>
-  </header>
+<header class="topbar"><div class="brand">¿QUIÉN SE VA? <small>2026</small></div><div class="sub">SIMULADOR DE DESCENSO · PRIMERA DIVISIÓN</div></header>
+<main class="container">
+<section class="intro">
+  <h1>Simulación de Resultados</h1>
+  <p>Elegí G / E / P en cada partido. Las tablas se actualizan automáticamente.</p>
+  <div class="notice"><b>Descenso:</b> último de la Tabla Anual + peor promedio. Si coinciden, se aplica el reglamento AFA. <b>Estado:</b> Fecha 8 casi finalizada; los partidos del 7/9 aún figuran como pendientes hasta su disputa.</div>
+</section>
 
-  <main class="wrap">
-    <section class="toolbar">
-      <div>
-        <h2>Tu simulación</h2>
-        <p id="progressText">0 pronósticos realizados</p>
-      </div>
-      <div class="actions">
-        <button id="randomBtn" class="btn secondary">🎲 Simular resultados</button>
-        <button id="resetBtn" class="btn danger">↻ Reiniciar</button>
-      </div>
-    </section>
-    <div class="progress"><div id="progressBar"></div></div>
+<section class="sim-card">
+  <div class="sim-head"><h2>Equipos en peligro</h2><button id="random" class="small-btn">🎲 Simular todo</button><button id="reset" class="small-btn">↺ Reiniciar</button></div>
+  <div id="cards" class="cards"></div>
+  <div class="progress-wrap"><span id="progressText"></span><div class="progress"><i id="progressBar"></i></div></div>
+</section>
 
-    <section class="danger-grid">
-      <article class="danger-card">
-        <div class="card-label">DESCENSO · TABLA ANUAL</div>
-        <div id="annualRelegated" class="relegated">—</div>
-      </article>
-      <article class="danger-card">
-        <div class="card-label">DESCENSO · PROMEDIOS</div>
-        <div id="averageRelegated" class="relegated">—</div>
-      </article>
-    </section>
+<section class="results">
+  <div class="table-box">
+    <div class="table-title"><h2>Tabla Anual</h2><span id="annualBadge">Proyección</span></div>
+    <div class="table-scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>Pts</th><th>Estado</th></tr></thead><tbody id="annual"></tbody></table></div>
+  </div>
+  <div class="table-box">
+    <div class="table-title"><h2>Tabla de Promedios</h2><span>2024–2026</span></div>
+    <div class="table-scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>Pts</th><th>Prom.</th></tr></thead><tbody id="avg"></tbody></table></div>
+  </div>
+</section>
 
-    <section>
-      <div class="section-title">
-        <div>
-          <div class="eyebrow">PELEA POR LA PERMANENCIA</div>
-          <h2>Los 7 equipos más comprometidos</h2>
-        </div>
-      </div>
-      <div id="teamsGrid" class="teams-grid"></div>
-    </section>
-
-    <section class="simulator">
-      <div class="section-title">
-        <div>
-          <div class="eyebrow">PRONÓSTICOS</div>
-          <h2>Partidos restantes</h2>
-        </div>
-        <div class="legend"><span>V</span> Victoria <span>E</span> Empate <span>D</span> Derrota</div>
-      </div>
-      <div id="fixtures"></div>
-    </section>
-
-    <section class="tables">
-      <div class="table-card">
-        <div class="table-head">
-          <div>
-            <div class="eyebrow">PROYECCIÓN</div>
-            <h2>Tabla Anual</h2>
-          </div>
-        </div>
-        <div class="table-scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>PTS</th><th>Δ</th></tr></thead><tbody id="annualTable"></tbody></table></div>
-      </div>
-
-      <div class="table-card">
-        <div class="table-head">
-          <div>
-            <div class="eyebrow">PROYECCIÓN</div>
-            <h2>Tabla de Promedios</h2>
-          </div>
-        </div>
-        <div class="table-scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PTS</th><th>PJ</th><th>Prom.</th></tr></thead><tbody id="averageTable"></tbody></table></div>
-      </div>
-    </section>
-
-    <footer>
-      <strong>Simulador del Descenso 2026</strong>
-      <span>Herramienta recreativa. Los datos de la temporada deben verificarse antes de publicar una simulación.</span>
-    </footer>
-  </main>
-  <script src="data.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+<section class="bottom">
+  <div class="danger"><b>🔴 Descenso por Tabla Anual</b><strong id="annualDown">—</strong></div>
+  <div class="danger"><b>🔴 Descenso por Promedios</b><strong id="avgDown">—</strong></div>
+</section>
+<footer>Datos de referencia: situación posterior a los partidos de Fecha 8 ya disputados al 7/9/2026. Los dos partidos del lunes se incorporarán al cierre oficial. Herramienta recreativa.</footer>
+</main>
+<script src="data.js"></script><script src="app.js"></script>
+</body></html>

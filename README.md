@@ -1,23 +1,7 @@
-# Simulador del Descenso — Argentina 2026
+# ¿Quién se va? — Simulador 2026
 
-Web estática de HTML/CSS/JavaScript.
+V3 inspirada en la interfaz de la referencia que enviaste: tarjetas de equipos, botones G/E/P, tablas compactas y escudos.
 
-## Cómo usarla
-Abrí `index.html` en un navegador.
+El snapshot usado corresponde a los resultados de Fecha 8 ya disputados al 7/9/2026. Barracas–Argentinos y Unión–Instituto todavía estaban programados para ese día, por lo que no se inventan sus resultados.
 
-## Cómo publicarla gratis
-Podés subir estos archivos a un repositorio de GitHub y activar GitHub Pages.
-
-## IMPORTANTE SOBRE ESTA PRIMERA ENTREGA
-Al 7/9/2026, cuando se preparó esta versión, todavía estaban pendientes los dos partidos que cerraban la Fecha 8:
-- Barracas Central vs Argentinos Juniors
-- Unión vs Instituto
-
-Por eso `data.js` deja el snapshot final y el fixture marcados como pendientes de verificación. La lógica de la aplicación ya está separada de los datos para poder actualizar únicamente `data.js`.
-
-Antes de publicar como versión definitiva, hay que reemplazar:
-- `DATA.teams`
-- `DATA.fixtures`
-- `DATA.focusIds` (opcional; se calcula automáticamente si queda vacío)
-
-No usar esta primera entrega como fuente oficial de posiciones hasta completar esa actualización.
+La lógica de la simulación está separada de los datos. Para publicar: subí estos archivos al mismo repositorio de GitHub Pages y reemplazá los anteriores.
