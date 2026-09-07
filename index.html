@@ -1,139 +1,165 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Quién se va · Simulador de descenso 2026</title>
-<meta name="description" content="Simulador de descenso de la Liga Profesional 2026">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quién se va · Argentina 2026</title>
 <style>
-:root{--navy:#071a33;--blue:#0b66d6;--light:#f3f6fa;--line:#dce2ea;--text:#172235;--muted:#64748b;--win:#18a957;--draw:#d79800;--loss:#e42a32;--redbg:#ffe5e7;--greenbg:#e9f8ef;--yellowbg:#fff5d9}
-*{box-sizing:border-box}body{margin:0;background:#071225;color:var(--text);font-family:Arial,Helvetica,sans-serif}.wrap{width:min(1200px,calc(100% - 28px));margin:auto}
-.top{background:#fff;padding:24px 0 16px;border-radius:0 0 12px 12px}.brand{font-size:28px;font-weight:800;color:var(--navy)}.subtitle{margin:5px 0 0;color:var(--muted);font-size:13px}.note{margin-top:16px;background:#edf5ff;border-left:4px solid #4285f4;padding:13px 15px;font-size:13px;line-height:1.5}.note b{color:var(--navy)}
-.main{padding:16px 0 30px}.toolbar{background:#fff;border-radius:12px;padding:13px 15px;display:flex;justify-content:space-between;align-items:center;gap:15px}.toolbar strong{font-size:13px}.btn{border:0;border-radius:7px;padding:9px 13px;font-weight:700;cursor:pointer}.btn.primary{background:#1669c9;color:#fff}.btn.secondary{background:#e8edf4;color:#17304c}.btn:hover{filter:brightness(.98)}
-h2{font-size:21px;margin:18px 0 11px;color:#fff}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.club{background:#fff;border-radius:10px;border:1px solid #cfd6df;padding:14px}.club-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}.crest{width:42px;height:42px;border-radius:10px;border:1px solid #d6dde6;display:grid;place-items:center;background:#fff;font-size:12px;font-weight:900;color:var(--navy);overflow:hidden}.crest img{width:36px;height:36px;object-fit:contain}.club-name{font-size:18px;font-weight:800}.club-points{margin-left:auto;font-size:20px;font-weight:900;color:var(--blue)}.match{padding:9px 0;border-top:1px solid #edf0f4}.match-line{display:flex;align-items:center;gap:7px;font-size:12px;margin-bottom:7px}.round{color:#44546a;font-weight:700}.venue{font-weight:800;color:#4a91e7;background:#eaf2ff;border-radius:5px;padding:2px 5px}.opp{color:#334155;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.pick{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px}.pick button{height:30px;border:0;border-radius:5px;background:#e6e9ee;color:#22334a;font-weight:800;cursor:pointer}.pick button.v.active{background:var(--win);color:#fff}.pick button.e.active{background:var(--draw);color:#fff}.pick button.d.active{background:var(--loss);color:#fff}.match.shared{background:#fafbfc;border-radius:7px;padding:9px;margin-top:2px}
-.result-boxes{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}.result{background:#fff;border-radius:12px;padding:15px;border:1px solid #d3dae3}.result small{display:block;color:var(--muted);font-weight:700;text-transform:uppercase;font-size:10px;letter-spacing:.06em}.result b{display:block;font-size:20px;margin-top:6px}.result.desc{border-color:#ff666b;background:#fff7f7}.result.desc b{color:#c51f29}.result.safe{border-color:#62cb88;background:#f7fff9}
-.tables{display:grid;grid-template-columns:1fr 1fr;gap:14px}.tablebox{background:#fff;border-radius:12px;overflow:hidden}.tabletitle{padding:15px 16px;border-bottom:1px solid var(--line);font-size:20px;font-weight:800}.tabletitle span{font-size:11px;color:var(--muted);font-weight:600;margin-left:7px}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:10px 10px;border-bottom:1px solid #edf0f4;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}th{font-size:10px;color:#748396;text-transform:uppercase}tbody tr.desc{background:var(--redbg)}tbody tr.focus{background:#f5f9ff}.badge{font-size:10px;padding:3px 5px;border-radius:4px;background:#ff5d62;color:#fff;font-weight:800;margin-left:5px}.up{color:#10934c;font-weight:800}
-footer{color:#9aacbe;text-align:center;padding:20px 0 35px;font-size:11px}
-@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.tables{grid-template-columns:1fr}}
-@media(max-width:620px){.wrap{width:calc(100% - 18px)}.cards{grid-template-columns:1fr}.result-boxes{grid-template-columns:1fr}.toolbar{align-items:flex-start;flex-direction:column}.club-name{font-size:17px}.club-points{font-size:18px}}
+:root{--navy:#07152b;--blue:#1669cf;--line:#dbe1e8;--muted:#6b7788;--green:#12a94f;--gold:#d99400;--red:#e32932;--bg:#061225}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#172334;font-family:Arial,Helvetica,sans-serif}.wrap{width:min(1220px,calc(100% - 18px));margin:auto}
+header{background:#fff;border-radius:0 0 11px 11px;padding:18px 0 14px}.brand{font-size:27px;font-weight:800;color:var(--navy)}.sub{font-size:12px;color:var(--muted);margin-top:4px}
+.notice{margin-top:12px;background:#edf5ff;border-left:4px solid #4385ef;padding:10px 12px;font-size:12px;line-height:1.45}.notice b{color:#102a4c}
+.toolbar{margin:12px 0;background:#fff;border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px}.status{font-size:11px;color:var(--muted)}.actions button{border:0;border-radius:6px;padding:8px 11px;font-weight:800;cursor:pointer}.sync{background:#e7edf6;color:#18314f}.reset{background:#1669cf;color:#fff}.live{display:inline-flex;align-items:center;gap:6px;margin-left:8px;color:#0b9443;font-weight:800}.dot{width:7px;height:7px;border-radius:50%;background:#13ae52}
+h2{color:#fff;font-size:19px;margin:14px 0 10px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.club{background:#fff;border:1px solid #cfd7e2;border-radius:10px;padding:12px}.clubHead{display:flex;align-items:center;gap:9px;padding-bottom:9px;border-bottom:1px solid #edf0f4}.logo{width:39px;height:39px;object-fit:contain}.clubName{font-weight:800;font-size:17px}.pts{margin-left:auto;color:var(--blue);font-weight:900;font-size:21px}.delta{font-size:10px;color:var(--muted);margin-left:3px}
+.match{padding:9px 0;border-bottom:1px solid #eef1f5}.match:last-child{border-bottom:0}.line{display:flex;align-items:center;gap:6px;font-size:12px;margin-bottom:6px}.round{font-weight:800;color:#546274}.venue{font-size:9px;color:#327bd0;background:#eaf2ff;border-radius:4px;padding:2px 4px;font-weight:900}.opp{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.date{margin-left:auto;color:#8b96a4;font-size:9px}.pick{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}.pick button{height:28px;border:0;border-radius:5px;background:#e7e9ee;color:#26364a;font-weight:900;cursor:pointer}.pick button:disabled{opacity:.75;cursor:default}.pick .v.on{background:var(--green);color:#fff}.pick .e.on{background:var(--gold);color:#fff}.pick .d.on{background:var(--red);color:#fff}
+.actual{font-size:10px;background:#eef7f1;color:#0b9344;border-radius:4px;padding:3px 5px;font-weight:800;margin-left:auto}
+.results{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.result{background:#fff;border-radius:10px;padding:13px;border:1px solid var(--line)}.result small{font-size:9px;text-transform:uppercase;font-weight:800;color:var(--muted)}.result b{display:block;font-size:19px;margin-top:5px}.desc{border-color:#ff6267;background:#fff7f7}.desc b{color:#bd1d25}
+.tables{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}.box{background:#fff;border-radius:10px;overflow:hidden}.title{font-size:18px;font-weight:800;padding:13px 14px;border-bottom:1px solid var(--line)}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:11px}th,td{padding:8px 9px;border-bottom:1px solid #edf0f4;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}th{font-size:9px;text-transform:uppercase;color:#758296}tr.focus{background:#f4f8fd}tr.desc{background:#ffe4e6}.miniLogo{width:22px;height:22px;object-fit:contain;vertical-align:middle;margin-right:5px}.tag{background:#e32a35;color:#fff;padding:2px 4px;border-radius:3px;font-size:8px;font-weight:900;margin-left:4px}
+footer{color:#8ea0b4;font-size:9px;text-align:center;padding:15px 0 28px}
+@media(max-width:950px){.cards{grid-template-columns:repeat(2,1fr)}.tables{grid-template-columns:1fr}}
+@media(max-width:620px){.cards{grid-template-columns:1fr}.results{grid-template-columns:1fr}.toolbar{align-items:flex-start;flex-direction:column}.actions{width:100%}.actions button{width:49%}.clubName{font-size:16px}}
 </style>
 </head>
 <body>
-<header class="top">
-<div class="wrap">
-<div class="brand">Quién se va · 2026</div>
-<div class="subtitle">Simulador de descenso · Liga Profesional Argentina</div>
-<div class="note"><b>Descensos:</b> 1 equipo por la última posición de promedios y 1 equipo por la última posición de la Tabla Anual. <b>Si el mismo club queda último en ambas, el segundo descenso pasa al anteúltimo de la Tabla Anual.</b> En caso de igualdad de puntos en una posición de descenso, corresponde desempate según el reglamento.</div>
-</div>
-</header>
-<main class="wrap main">
-<div class="toolbar"><strong id="progress">0 de 0 partidos pronosticados</strong><div><button class="btn secondary" id="random">🎲 Simular todo</button> <button class="btn primary" id="reset">↺ Reiniciar</button></div></div>
-
-<h2>Simulación de resultados</h2>
-<section class="cards" id="cards"></section>
-
-<section class="result-boxes">
-<div class="result desc"><small>Descendería por Tabla Anual</small><b id="relegAnnual">—</b><span id="annualReason"></span></div>
-<div class="result desc"><small>Descendería por Promedios</small><b id="relegAvg">—</b></div>
-</section>
-
-<section class="tables">
-<div class="tablebox"><div class="tabletitle">Tabla Anual <span>proyección dinámica</span></div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>PTS</th><th>Δ</th></tr></thead><tbody id="annual"></tbody></table></div></div>
-<div class="tablebox"><div class="tabletitle">Tabla de Promedios <span>proyección dinámica</span></div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PTS</th><th>PJ</th><th>Prom.</th></tr></thead><tbody id="averages"></tbody></table></div></div>
-</section>
-
-<footer>Snapshot inicial: 7/09/2026, antes de Barracas Central–Argentinos Juniors y Unión–Instituto. Datos de tablas tomados del estado publicado al 6/09/2026; fixture restante oficial LPF.</footer>
+<header><div class="wrap"><div class="brand">Quién se va · 2026</div><div class="sub">Simulador de descenso · Liga Profesional Argentina</div>
+<div class="notice"><b>Descensos:</b> 1 por la última posición de promedios y 1 por la última posición de la Tabla Anual. <b>Si el último de ambas tablas es el mismo club, el segundo descenso corresponde al anteúltimo de la Tabla Anual.</b></div>
+</div></header>
+<main class="wrap">
+<div class="toolbar"><div class="status" id="syncStatus">Cargando datos en vivo…</div><div class="actions"><button class="sync" id="syncBtn">↻ Actualizar ahora</button> <button class="reset" id="resetBtn">↺ Reiniciar pronósticos</button></div></div>
+<h2>Simulación de resultados</h2><section class="cards" id="cards"></section>
+<section class="results"><div class="result desc"><small>Descendería por Tabla Anual</small><b id="annualRel">—</b></div><div class="result desc"><small>Descendería por Promedios</small><b id="avgRel">—</b></div></section>
+<section class="tables"><div class="box"><div class="title">Tabla Anual</div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>PTS</th><th>Δ</th></tr></thead><tbody id="annual"></tbody></table></div></div>
+<div class="box"><div class="title">Tabla de Promedios</div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>Pts</th><th>PJ</th><th>Prom.</th></tr></thead><tbody id="avg"></tbody></table></div></div></section>
+<footer>Actualización automática mediante una fuente pública de resultados. Si la fuente cambia su API, se conserva el snapshot y se muestra el estado de conexión. Los escudos se cargan desde el CDN de TyC Sports.</footer>
 </main>
-
 <script>
-const TEAMS=[{"id":"RIV","name":"Independiente Rivadavia","annual":45,"pjAnnual":23,"avgPts":134,"avgPJ":96},{"id":"ARG","name":"Argentinos Juniors","annual":45,"pjAnnual":23,"avgPts":158,"avgPJ":96},{"id":"VEL","name":"Vélez","annual":44,"pjAnnual":24,"avgPts":160,"avgPJ":97},{"id":"BOC","name":"Boca Juniors","annual":41,"pjAnnual":24,"avgPts":170,"avgPJ":97},{"id":"GLP","name":"Gimnasia LP","annual":41,"pjAnnual":24,"avgPts":127,"avgPJ":97},{"id":"ROS","name":"Rosario Central","annual":39,"pjAnnual":23,"avgPts":152,"avgPJ":96},{"id":"EST","name":"Estudiantes LP","annual":38,"pjAnnual":24,"avgPts":143,"avgPJ":97},{"id":"BEL","name":"Belgrano","annual":38,"pjAnnual":24,"avgPts":124,"avgPJ":97},{"id":"INS","name":"Instituto","annual":37,"pjAnnual":23,"avgPts":124,"avgPJ":96},{"id":"RIVP","name":"River Plate","annual":36,"pjAnnual":23,"avgPts":159,"avgPJ":96},{"id":"GDM","name":"Gimnasia Mendoza","annual":35,"pjAnnual":24,"avgPts":35,"avgPJ":24},{"id":"IND","name":"Independiente","annual":34,"pjAnnual":23,"avgPts":144,"avgPJ":96},{"id":"SAR","name":"Sarmiento","annual":34,"pjAnnual":24,"avgPts":104,"avgPJ":97},{"id":"DYJ","name":"Defensa y Justicia","annual":33,"pjAnnual":23,"avgPts":129,"avgPJ":96},{"id":"TIG","name":"Tigre","annual":32,"pjAnnual":24,"avgPts":120,"avgPJ":97},{"id":"HUR","name":"Huracán","annual":32,"pjAnnual":24,"avgPts":141,"avgPJ":97},{"id":"SLO","name":"San Lorenzo","annual":32,"pjAnnual":24,"avgPts":128,"avgPJ":97},{"id":"UNI","name":"Unión","annual":31,"pjAnnual":23,"avgPts":130,"avgPJ":96},{"id":"LAN","name":"Lanús","annual":31,"pjAnnual":23,"avgPts":140,"avgPJ":96},{"id":"TAL","name":"Talleres","annual":31,"pjAnnual":24,"avgPts":137,"avgPJ":97},{"id":"BAR","name":"Barracas Central","annual":31,"pjAnnual":23,"avgPts":129,"avgPJ":96},{"id":"RAC","name":"Racing Club","annual":26,"pjAnnual":23,"avgPts":149,"avgPJ":96},{"id":"NOB","name":"Newell's","annual":26,"pjAnnual":23,"avgPts":108,"avgPJ":96},{"id":"BAN","name":"Banfield","annual":25,"pjAnnual":24,"avgPts":101,"avgPJ":97},{"id":"PLA","name":"Platense","annual":25,"pjAnnual":24,"avgPts":117,"avgPJ":97},{"id":"TUC","name":"Atlético Tucumán","annual":24,"pjAnnual":23,"avgPts":108,"avgPJ":96},{"id":"CC","name":"Central Córdoba","annual":23,"pjAnnual":23,"avgPts":107,"avgPJ":96},{"id":"RIE","name":"Deportivo Riestra","annual":20,"pjAnnual":24,"avgPts":120,"avgPJ":97},{"id":"ALD","name":"Aldosivi","annual":13,"pjAnnual":24,"avgPts":46,"avgPJ":56},{"id":"ERC","name":"Estudiantes RC","annual":11,"pjAnnual":24,"avgPts":11,"avgPJ":24}];
-const FIXTURES=[{"id":"F9-INS-ERC","round":9,"home":"INS","away":"ERC","focus":"ERC","other":"INS"},{"id":"F9-BOC-CC","round":9,"home":"BOC","away":"CC","focus":"CC","other":"BOC"},{"id":"F9-RIE-LAN","round":9,"home":"RIE","away":"LAN","focus":"RIE","other":"LAN"},{"id":"F9-EST-PLA","round":9,"home":"EST","away":"PLA","focus":"PLA","other":"EST"},{"id":"F9-TUC-RIVP","round":9,"home":"TUC","away":"RIVP","focus":"TUC","other":"RIVP"},{"id":"F9-RIV-ALD","round":9,"home":"RIV","away":"ALD","focus":"ALD","other":"RIV"},{"id":"F9-BAN-BAR","round":9,"home":"BAN","away":"BAR","focus":"BAN","other":"BAR"},{"id":"F10-NOB-PLA","round":10,"home":"NOB","away":"PLA","focus":"PLA","other":"NOB"},{"id":"F10-GDM-RIE","round":10,"home":"GDM","away":"RIE","focus":"RIE","other":"GDM"},{"id":"F10-CC-DYJ","round":10,"home":"CC","away":"DYJ","focus":"CC","other":"DYJ"},{"id":"F10-BAN-GLP","round":10,"home":"BAN","away":"GLP","focus":"BAN","other":"GLP"},{"id":"F10-TUC-ALD","round":10,"home":"TUC","away":"ALD","focus":"TUC","other":"ALD"},{"id":"F10-ERC-BEL","round":10,"home":"ERC","away":"BEL","focus":"ERC","other":"BEL"},{"id":"F11-RIE-CC","round":11,"home":"RIE","away":"CC","focus":"RIE","other":"CC"},{"id":"F11-VEL-PLA","round":11,"home":"VEL","away":"PLA","focus":"PLA","other":"VEL"},{"id":"F11-RAC-ERC","round":11,"home":"RAC","away":"ERC","focus":"ERC","other":"RAC"},{"id":"F11-ALD-HUR","round":11,"home":"ALD","away":"HUR","focus":"ALD","other":"HUR"},{"id":"F11-BAR-TUC","round":11,"home":"BAR","away":"TUC","focus":"TUC","other":"BAR"},{"id":"F11-ROS-BAN","round":11,"home":"ROS","away":"BAN","focus":"BAN","other":"ROS"},{"id":"F12-EST-CC","round":12,"home":"EST","away":"CC","focus":"CC","other":"EST"},{"id":"F12-RIE-SLO","round":12,"home":"RIE","away":"SLO","focus":"RIE","other":"SLO"},{"id":"F12-BAN-TIG","round":12,"home":"BAN","away":"TIG","focus":"BAN","other":"TIG"},{"id":"F12-TUC-GLP","round":12,"home":"TUC","away":"GLP","focus":"TUC","other":"GLP"},{"id":"F12-SAR-ALD","round":12,"home":"SAR","away":"ALD","focus":"ALD","other":"SAR"},{"id":"F12-ERC-RIVP","round":12,"home":"ERC","away":"RIVP","focus":"ERC","other":"RIVP"},{"id":"F13-UNI-RIE","round":13,"home":"UNI","away":"RIE","focus":"RIE","other":"UNI"},{"id":"F13-CC-NOB","round":13,"home":"CC","away":"NOB","focus":"CC","other":"NOB"},{"id":"F13-LAN-PLA","round":13,"home":"LAN","away":"PLA","focus":"PLA","other":"LAN"},{"id":"F13-ALD-ERC","round":13,"home":"ALD","away":"ERC","focus":"ALD","other":"ERC"},{"id":"F13-ROS-TUC","round":13,"home":"ROS","away":"TUC","focus":"TUC","other":"ROS"},{"id":"F13-ARG-BAN","round":13,"home":"ARG","away":"BAN","focus":"BAN","other":"ARG"},{"id":"F14-GDM-PLA","round":14,"home":"GDM","away":"PLA","focus":"PLA","other":"GDM"},{"id":"F14-CC-VEL","round":14,"home":"CC","away":"VEL","focus":"CC","other":"VEL"},{"id":"F14-INS-RIE","round":14,"home":"INS","away":"RIE","focus":"RIE","other":"INS"},{"id":"F14-TIG-TUC","round":14,"home":"TIG","away":"TUC","focus":"TUC","other":"TIG"},{"id":"F14-ERC-BAR","round":14,"home":"ERC","away":"BAR","focus":"ERC","other":"BAR"},{"id":"F14-BEL-ALD","round":14,"home":"BEL","away":"ALD","focus":"ALD","other":"BEL"},{"id":"F15-RIE-TAL","round":15,"home":"RIE","away":"TAL","focus":"RIE","other":"TAL"},{"id":"F15-CC-PLA","round":15,"home":"CC","away":"PLA","focus":"CC","other":"PLA"},{"id":"F15-RAC-ALD","round":15,"home":"RAC","away":"ALD","focus":"ALD","other":"RAC"},{"id":"F15-GLP-ERC","round":15,"home":"GLP","away":"ERC","focus":"ERC","other":"GLP"},{"id":"F15-ARG-TUC","round":15,"home":"ARG","away":"TUC","focus":"TUC","other":"ARG"},{"id":"F15-RIV-BAN","round":15,"home":"RIV","away":"BAN","focus":"BAN","other":"RIV"},{"id":"F16-LAN-CC","round":16,"home":"LAN","away":"CC","focus":"CC","other":"LAN"},{"id":"F16-PLA-SLO","round":16,"home":"PLA","away":"SLO","focus":"PLA","other":"SLO"},{"id":"F16-RIE-IND","round":16,"home":"RIE","away":"IND","focus":"RIE","other":"IND"},{"id":"F16-TUC-BAN","round":16,"home":"TUC","away":"BAN","focus":"TUC","other":"BAN"},{"id":"F16-ERC-ROS","round":16,"home":"ERC","away":"ROS","focus":"ERC","other":"ROS"},{"id":"F16-RIVP-ALD","round":16,"home":"RIVP","away":"ALD","focus":"ALD","other":"RIVP"}];
-const FOCUS=["ALD","ERC","RIE","CC","PLA","TUC","BAN"];
-const T=Object.fromEntries(TEAMS.map(t=>[t.id,t]));
-const P={};
-const points={"V":3,"E":1,"D":0};
-function crest(t){
-  // The source site may change/disable crest hosts, so the initial badge is text-based.
-  // It still renders as a stable shield-like club marker with the team initials.
-  return `<div class="crest" aria-label="Escudo de ${t.name}">${t.id.slice(0,3)}</div>`;
+const TEAMS=[{"id":"RIV","name":"Independiente Rivadavia","annual":45,"pj":24,"avgPts":134,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/664.png?v=6"},{"id":"ARG","name":"Argentinos Juniors","annual":45,"pj":23,"avgPts":158,"avgPj":96,"logo":"https://statics-files.tycsports.com/escudos/2.png?v=6"},{"id":"VEL","name":"Vélez","annual":44,"pj":24,"avgPts":160,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/20.png?v=6"},{"id":"BOC","name":"Boca Juniors","annual":41,"pj":24,"avgPts":170,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/5.png?v=6"},{"id":"GLP","name":"Gimnasia (LP)","annual":41,"pj":24,"avgPts":127,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/8.png?v=6"},{"id":"ROS","name":"Rosario Central","annual":40,"pj":24,"avgPts":153,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/18.png?v=6"},{"id":"RIVP","name":"River Plate","annual":39,"pj":24,"avgPts":162,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/17.png?v=6"},{"id":"EST","name":"Estudiantes (LP)","annual":38,"pj":24,"avgPts":143,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/7.png?v=6"},{"id":"BEL","name":"Belgrano","annual":38,"pj":24,"avgPts":124,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/124.png?v=6"},{"id":"IND","name":"Independiente","annual":37,"pj":24,"avgPts":147,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/10.png?v=6"},{"id":"INS","name":"Instituto","annual":37,"pj":23,"avgPts":124,"avgPj":96,"logo":"https://statics-files.tycsports.com/escudos/11.png?v=6"},{"id":"GDM","name":"Gimnasia (Mza.)","annual":35,"pj":24,"avgPts":35,"avgPj":24,"logo":"https://statics-files.tycsports.com/escudos/816.png?v=6"},{"id":"LAN","name":"Lanús","annual":34,"pj":24,"avgPts":143,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/12.png?v=6"},{"id":"SAR","name":"Sarmiento","annual":34,"pj":24,"avgPts":104,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/142.png?v=6"},{"id":"DYJ","name":"Defensa y Justicia","annual":33,"pj":24,"avgPts":129,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/129.png?v=6"},{"id":"TIG","name":"Tigre","annual":32,"pj":24,"avgPts":120,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/136.png?v=6"},{"id":"HUR","name":"Huracán","annual":32,"pj":24,"avgPts":141,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/100.png?v=6"},{"id":"SLO","name":"San Lorenzo","annual":32,"pj":24,"avgPts":128,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/19.png?v=6"},{"id":"UNI","name":"Unión","annual":31,"pj":23,"avgPts":130,"avgPj":96,"logo":"https://statics-files.tycsports.com/escudos/137.png?v=6"},{"id":"TAL","name":"Talleres","annual":31,"pj":24,"avgPts":137,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/135.png?v=6"},{"id":"BAR","name":"Barracas Central","annual":31,"pj":23,"avgPts":129,"avgPj":96,"logo":"https://statics-files.tycsports.com/escudos/685.png?v=6"},{"id":"TUC","name":"Atlético Tucumán","annual":27,"pj":24,"avgPts":111,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/815.png?v=6"},{"id":"NOB","name":"Newell's","annual":27,"pj":24,"avgPts":109,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/13.png?v=6"},{"id":"RAC","name":"Racing Club","annual":26,"pj":24,"avgPts":149,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/16.png?v=6"},{"id":"BAN","name":"Banfield","annual":25,"pj":24,"avgPts":101,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/4.png?v=6"},{"id":"PLA","name":"Platense","annual":25,"pj":24,"avgPts":117,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/489.png?v=6"},{"id":"CC","name":"Central Córdoba","annual":23,"pj":24,"avgPts":107,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/1485.png?v=6"},{"id":"RIE","name":"Deportivo Riestra","annual":20,"pj":24,"avgPts":120,"avgPj":97,"logo":"https://statics-files.tycsports.com/escudos/788.png?v=6"},{"id":"ALD","name":"Aldosivi","annual":13,"pj":24,"avgPts":46,"avgPj":56,"logo":"https://statics-files.tycsports.com/escudos/122.png?v=6"},{"id":"ERC","name":"Estudiantes (RC)","annual":11,"pj":24,"avgPts":11,"avgPj":24,"logo":"https://statics-files.tycsports.com/escudos/834.png?v=6"}], FIXTURES=[{"id":"8-BAR-ARG","round":8,"home":"BAR","away":"ARG","date":"2026-09-07"},{"id":"8-UNI-INS","round":8,"home":"UNI","away":"INS","date":"2026-09-07"},{"id":"9-NOB-VEL","round":9,"home":"NOB","away":"VEL","date":"2026-09-11"},{"id":"9-DYJ-GDM","round":9,"home":"DYJ","away":"GDM","date":"2026-09-11"},{"id":"9-BOC-CC","round":9,"home":"BOC","away":"CC","date":"2026-09-11"},{"id":"9-EST-PLA","round":9,"home":"EST","away":"PLA","date":"2026-09-12"},{"id":"9-RIV-ALD","round":9,"home":"RIV","away":"ALD","date":"2026-09-12"},{"id":"9-TUC-RIVP","round":9,"home":"TUC","away":"RIVP","date":"2026-09-12"},{"id":"9-TAL-UNI","round":9,"home":"TAL","away":"UNI","date":"2026-09-12"},{"id":"9-SAR-BEL","round":9,"home":"SAR","away":"BEL","date":"2026-09-13"},{"id":"9-TIG-ROS","round":9,"home":"TIG","away":"ROS","date":"2026-09-13"},{"id":"9-ARG-GLP","round":9,"home":"ARG","away":"GLP","date":"2026-09-13"},{"id":"9-IND-SLO","round":9,"home":"IND","away":"SLO","date":"2026-09-13"},{"id":"9-HUR-RAC","round":9,"home":"HUR","away":"RAC","date":"2026-09-13"},{"id":"9-RIE-LAN","round":9,"home":"RIE","away":"LAN","date":"2026-09-14"},{"id":"9-BAN-BAR","round":9,"home":"BAN","away":"BAR","date":"2026-09-14"},{"id":"9-INS-ERC","round":9,"home":"INS","away":"ERC","date":"2026-09-14"},{"id":"10-CC-DYJ","round":10,"home":"CC","away":"DYJ","date":"2026-09-18"},{"id":"10-RAC-SAR","round":10,"home":"RAC","away":"SAR","date":"2026-09-18"},{"id":"10-GDM-RIE","round":10,"home":"GDM","away":"RIE","date":"2026-09-19"},{"id":"10-GLP-BAN","round":10,"home":"GLP","away":"BAN","date":"2026-09-19"},{"id":"10-UNI-IND","round":10,"home":"UNI","away":"IND","date":"2026-09-19"},{"id":"10-RIVP-HUR","round":10,"home":"RIVP","away":"HUR","date":"2026-09-19"},{"id":"10-INS-TAL","round":10,"home":"INS","away":"TAL","date":"2026-09-19"},{"id":"10-SLO-BOC","round":10,"home":"SLO","away":"BOC","date":"2026-09-20"},{"id":"10-PLA-NOB","round":10,"home":"PLA","away":"NOB","date":"2026-09-20"},{"id":"10-ROS-ARG","round":10,"home":"ROS","away":"ARG","date":"2026-09-20"},{"id":"10-BEL-ERC","round":10,"home":"BEL","away":"ERC","date":"2026-09-20"},{"id":"10-VEL-TIG","round":10,"home":"VEL","away":"TIG","date":"2026-09-20"},{"id":"10-ALD-TUC","round":10,"home":"ALD","away":"TUC","date":"2026-09-21"},{"id":"10-BAR-RIV","round":10,"home":"BAR","away":"RIV","date":"2026-09-21"},{"id":"10-LAN-EST","round":10,"home":"LAN","away":"EST","date":"2026-09-21"},{"id":"11-IND-INS","round":11,"home":"IND","away":"INS","date":"2026-10-02"},{"id":"11-RIV-GLP","round":11,"home":"RIV","away":"GLP","date":"2026-10-02"},{"id":"11-DYJ-SLO","round":11,"home":"DYJ","away":"SLO","date":"2026-10-03"},{"id":"11-NOB-LAN","round":11,"home":"NOB","away":"LAN","date":"2026-10-03"},{"id":"11-TUC-BAR","round":11,"home":"TUC","away":"BAR","date":"2026-10-03"},{"id":"11-ARG-TIG","round":11,"home":"ARG","away":"TIG","date":"2026-10-03"},{"id":"11-HUR-ALD","round":11,"home":"HUR","away":"ALD","date":"2026-10-03"},{"id":"11-SAR-RIVP","round":11,"home":"SAR","away":"RIVP","date":"2026-10-04"},{"id":"11-TAL-BEL","round":11,"home":"TAL","away":"BEL","date":"2026-10-04"},{"id":"11-BOC-UNI","round":11,"home":"BOC","away":"UNI","date":"2026-10-04"},{"id":"11-ERC-RAC","round":11,"home":"ERC","away":"RAC","date":"2026-10-04"},{"id":"11-RIE-CC","round":11,"home":"RIE","away":"CC","date":"2026-10-05"},{"id":"11-EST-GDM","round":11,"home":"EST","away":"GDM","date":"2026-10-05"},{"id":"11-VEL-PLA","round":11,"home":"VEL","away":"PLA","date":"2026-10-05"},{"id":"11-BAN-ROS","round":11,"home":"BAN","away":"ROS","date":"2026-10-05"},{"id":"12-PLA-ARG","round":12,"home":"PLA","away":"ARG","date":"2026-10-10"},{"id":"12-LAN-VEL","round":12,"home":"LAN","away":"VEL","date":"2026-10-10"},{"id":"12-GDM-NOB","round":12,"home":"GDM","away":"NOB","date":"2026-10-10"},{"id":"12-CC-EST","round":12,"home":"CC","away":"EST","date":"2026-10-10"},{"id":"12-SLO-RIE","round":12,"home":"SLO","away":"RIE","date":"2026-10-10"},{"id":"12-UNI-DYJ","round":12,"home":"UNI","away":"DYJ","date":"2026-10-10"},{"id":"12-INS-BOC","round":12,"home":"INS","away":"BOC","date":"2026-10-10"},{"id":"12-TAL-IND","round":12,"home":"TAL","away":"IND","date":"2026-10-10"},{"id":"12-TIG-BAN","round":12,"home":"TIG","away":"BAN","date":"2026-10-10"},{"id":"12-ROS-RIV","round":12,"home":"ROS","away":"RIV","date":"2026-10-10"},{"id":"12-GLP-TUC","round":12,"home":"GLP","away":"TUC","date":"2026-10-10"},{"id":"12-BAR-HUR","round":12,"home":"BAR","away":"HUR","date":"2026-10-10"},{"id":"12-ALD-SAR","round":12,"home":"ALD","away":"SAR","date":"2026-10-10"},{"id":"12-RIVP-ERC","round":12,"home":"RIVP","away":"ERC","date":"2026-10-10"},{"id":"12-RAC-BEL","round":12,"home":"RAC","away":"BEL","date":"2026-10-10"},{"id":"13-RAC-IND","round":13,"home":"RAC","away":"IND","date":"2026-10-17"},{"id":"13-BOC-TAL","round":13,"home":"BOC","away":"TAL","date":"2026-10-17"},{"id":"13-DYJ-INS","round":13,"home":"DYJ","away":"INS","date":"2026-10-17"},{"id":"13-RIE-UNI","round":13,"home":"RIE","away":"UNI","date":"2026-10-17"},{"id":"13-EST-SLO","round":13,"home":"EST","away":"SLO","date":"2026-10-17"},{"id":"13-NOB-CC","round":13,"home":"NOB","away":"CC","date":"2026-10-17"},{"id":"13-VEL-GDM","round":13,"home":"VEL","away":"GDM","date":"2026-10-17"},{"id":"13-PLA-LAN","round":13,"home":"PLA","away":"LAN","date":"2026-10-17"},{"id":"13-BEL-RIVP","round":13,"home":"BEL","away":"RIVP","date":"2026-10-17"},{"id":"13-ERC-ALD","round":13,"home":"ERC","away":"ALD","date":"2026-10-17"},{"id":"13-SAR-BAR","round":13,"home":"SAR","away":"BAR","date":"2026-10-17"},{"id":"13-HUR-GLP","round":13,"home":"HUR","away":"GLP","date":"2026-10-17"},{"id":"13-TUC-ROS","round":13,"home":"TUC","away":"ROS","date":"2026-10-17"},{"id":"13-RIV-TIG","round":13,"home":"RIV","away":"TIG","date":"2026-10-17"},{"id":"13-BAN-ARG","round":13,"home":"BAN","away":"ARG","date":"2026-10-17"},{"id":"14-BAN-LAN","round":14,"home":"BAN","away":"LAN","date":"2026-10-31"},{"id":"14-GDM-PLA","round":14,"home":"GDM","away":"PLA","date":"2026-10-31"},{"id":"14-CC-VEL","round":14,"home":"CC","away":"VEL","date":"2026-10-31"},{"id":"14-SLO-NOB","round":14,"home":"SLO","away":"NOB","date":"2026-10-31"},{"id":"14-UNI-EST","round":14,"home":"UNI","away":"EST","date":"2026-10-31"},{"id":"14-INS-RIE","round":14,"home":"INS","away":"RIE","date":"2026-10-31"},{"id":"14-TAL-DYJ","round":14,"home":"TAL","away":"DYJ","date":"2026-10-31"},{"id":"14-IND-BOC","round":14,"home":"IND","away":"BOC","date":"2026-10-31"},{"id":"14-ARG-RIV","round":14,"home":"ARG","away":"RIV","date":"2026-10-31"},{"id":"14-TIG-TUC","round":14,"home":"TIG","away":"TUC","date":"2026-10-31"},{"id":"14-ROS-HUR","round":14,"home":"ROS","away":"HUR","date":"2026-10-31"},{"id":"14-GLP-SAR","round":14,"home":"GLP","away":"SAR","date":"2026-10-31"},{"id":"14-BAR-ERC","round":14,"home":"BAR","away":"ERC","date":"2026-10-31"},{"id":"14-ALD-BEL","round":14,"home":"ALD","away":"BEL","date":"2026-10-31"},{"id":"14-RIVP-RAC","round":14,"home":"RIVP","away":"RAC","date":"2026-10-31"},{"id":"15-BOC-RIV","round":15,"home":"BOC","away":"RIV","date":"2026-11-07"},{"id":"15-DYJ-IND","round":15,"home":"DYJ","away":"IND","date":"2026-11-07"},{"id":"15-RIE-TAL","round":15,"home":"RIE","away":"TAL","date":"2026-11-07"},{"id":"15-EST-INS","round":15,"home":"EST","away":"INS","date":"2026-11-07"},{"id":"15-NOB-UNI","round":15,"home":"NOB","away":"UNI","date":"2026-11-07"},{"id":"15-VEL-SLO","round":15,"home":"VEL","away":"SLO","date":"2026-11-07"},{"id":"15-PLA-CC","round":15,"home":"PLA","away":"CC","date":"2026-11-07"},{"id":"15-LAN-GDM","round":15,"home":"LAN","away":"GDM","date":"2026-11-07"},{"id":"15-RAC-ALD","round":15,"home":"RAC","away":"ALD","date":"2026-11-07"},{"id":"15-BEL-BAR","round":15,"home":"BEL","away":"BAR","date":"2026-11-07"},{"id":"15-ERC-GLP","round":15,"home":"ERC","away":"GLP","date":"2026-11-07"},{"id":"15-SAR-ROS","round":15,"home":"SAR","away":"ROS","date":"2026-11-07"},{"id":"15-HUR-TIG","round":15,"home":"HUR","away":"TIG","date":"2026-11-07"},{"id":"15-TUC-ARG","round":15,"home":"TUC","away":"ARG","date":"2026-11-07"},{"id":"15-RIVP-BAN","round":15,"home":"RIVP","away":"BAN","date":"2026-11-07"},{"id":"16-GDM-RIV","round":16,"home":"GDM","away":"RIV","date":"2026-11-14"},{"id":"16-CC-LAN","round":16,"home":"CC","away":"LAN","date":"2026-11-14"},{"id":"16-SLO-PLA","round":16,"home":"SLO","away":"PLA","date":"2026-11-14"},{"id":"16-UNI-VEL","round":16,"home":"UNI","away":"VEL","date":"2026-11-14"},{"id":"16-INS-NOB","round":16,"home":"INS","away":"NOB","date":"2026-11-14"},{"id":"16-TAL-EST","round":16,"home":"TAL","away":"EST","date":"2026-11-14"},{"id":"16-IND-RIE","round":16,"home":"IND","away":"RIE","date":"2026-11-14"},{"id":"16-BOC-DYJ","round":16,"home":"BOC","away":"DYJ","date":"2026-11-14"},{"id":"16-BAN-TUC","round":16,"home":"BAN","away":"TUC","date":"2026-11-14"},{"id":"16-ARG-HUR","round":16,"home":"ARG","away":"HUR","date":"2026-11-14"},{"id":"16-TIG-SAR","round":16,"home":"TIG","away":"SAR","date":"2026-11-14"},{"id":"16-ROS-ERC","round":16,"home":"ROS","away":"ERC","date":"2026-11-14"},{"id":"16-GLP-BEL","round":16,"home":"GLP","away":"BEL","date":"2026-11-14"},{"id":"16-BAR-RAC","round":16,"home":"BAR","away":"RAC","date":"2026-11-14"},{"id":"16-ALD-RIVP","round":16,"home":"ALD","away":"RIVP","date":"2026-11-14"}], TRACKED=["RIE","PLA","BAN","ALD","ERC","CC","TUC","NOB","RAC"];
+const BASE=Object.fromEntries(TEAMS.map(t=>[t.id,t]));
+const pred={}; const actual={}; const PTS={V:3,E:1,D:0};
+const apiBase="https://site.api.espn.com/apis/site/v2/sports/soccer/arg.1/scoreboard?dates=20260907-20261115&limit=500";
+const aliases={
+"Aldosivi":"ALD","Argentinos Juniors":"ARG","Atlético Tucumán":"TUC","Atletico Tucuman":"TUC",
+"Banfield":"BAN","Barracas Central":"BAR","Belgrano":"BEL","Boca Juniors":"BOC",
+"Central Córdoba":"CC","Central Cordoba":"CC","Defensa y Justicia":"DYJ","Deportivo Riestra":"RIE",
+"Estudiantes":"EST","Estudiantes de Río Cuarto":"ERC","Estudiantes Rio Cuarto":"ERC",
+"Gimnasia":"GLP","Gimnasia La Plata":"GLP","Gimnasia (LP)":"GLP","Gimnasia (Mendoza)":"GDM",
+"Godoy Cruz":"GDC","Huracán":"HUR","Huracan":"HUR","Independiente":"IND",
+"Independiente Rivadavia":"RIV","Instituto":"INS","Lanús":"LAN","Lanus":"LAN",
+"Newell's":"NOB","Newells":"NOB","Newell`s":"NOB","Platense":"PLA","Racing Club":"RAC","Racing":"RAC",
+"River Plate":"RIVP","Rosario Central":"ROS","San Lorenzo":"SLO","Sarmiento":"SAR",
+"Talleres":"TAL","Tigre":"TIG","Unión":"UNI","Union":"UNI","Vélez":"VEL","Velez":"VEL"
+};
+function norm(s){return s.normalize("NFD").replace(/\p{Diacritic}/gu,"").replace(/[’`]/g,"'").trim().toLowerCase()}
+const aliasNorm=Object.fromEntries(Object.entries(aliases).map(([k,v])=>[norm(k),v]));
+function teamId(apiName){return aliasNorm[norm(apiName)]||null}
+function perspective(match,teamId){
+  if(teamId===match.home)return {win:"V",draw:"E",loss:"D"};
+  return {win:"D",draw:"E",loss:"V"};
 }
-function ptsForResult(r, perspectiveHome){
-  if(r==="E") return [1,1];
-  if(r==="V") return perspectiveHome?[3,0]:[0,3];
-  return perspectiveHome?[0,3]:[3,0];
+function fixtureResult(m){
+  const r=actual[m.id];
+  if(r)return r;
+  const p=pred[m.id];
+  if(!p)return null;
+  return p;
 }
-function isShared(m){return FOCUS.includes(m.home)&&FOCUS.includes(m.away)}
-function getPredKey(m){return m.id}
-function current(){
-  return TEAMS.map(t=>({...t}));
+function addResult(map,m,res){
+  if(!res)return;
+  let hp,ap;
+  if(res==="D"){hp=0;ap=3}else if(res==="E"){hp=1;ap=1}else{hp=3;ap=0}
+  map[m.home].annual+=hp;map[m.away].annual+=ap;
+  map[m.home].pj+=1;map[m.away].pj+=1;
+  map[m.home].avgPts+=hp;map[m.away].avgPts+=ap;
+  map[m.home].avgPj+=1;map[m.away].avgPj+=1;
 }
-function project(){
-  const a=current(), map=Object.fromEntries(a.map(t=>[t.id,t]));
+function projected(){
+  const map=Object.fromEntries(TEAMS.map(t=>[t.id,{...t,avgPj:t.avgPj??t.avgPj??t.avgPj}]));
+  for(const t of Object.values(map)){t.avgPj=t.avgPj||t.avgPj||t.avgPj;t.avgPts=t.avgPts}
   for(const m of FIXTURES){
-    const r=P[m.id]; if(!r) continue;
-    const homeIsPerspective = m.focus===m.home;
-    const [hp,ap]=ptsForResult(r,homeIsPerspective);
-    map[m.home].annual+=hp; map[m.away].annual+=ap;
-    map[m.home].pjAnnual+=1; map[m.away].pjAnnual+=1;
-    map[m.home].avgPts+=hp; map[m.away].avgPts+=ap;
-    map[m.home].avgPJ+=1; map[m.away].avgPJ+=1;
+    if(actual[m.id]) addResult(map,m,actual[m.id]);
+    else if(pred[m.id]) addResult(map,m,globalResultFromPerspective(m,pred[m.id]));
   }
-  return a;
+  return Object.values(map);
 }
-function avg(t){return t.avgPJ?t.avgPts/t.avgPJ:0}
+function globalResultFromPerspective(m,p){
+  const focus=predPerspective[m.id];
+  return focus;
+}
+const predPerspective={};
+function setResult(mId,team,r){
+  const m=FIXTURES.find(x=>x.id===mId); if(!m)return;
+  if(r==="V") pred[mId]=team===m.home?"V":"D";
+  else if(r==="D") pred[mId]=team===m.home?"D":"V";
+  else pred[mId]="E";
+  predPerspective[mId]=pred[mId];
+  render();
+}
 function standings(){
-  const a=project();
+  const a=projected().map(t=>({...t,avg:t.avgPj?t.avgPts/t.avgPj:0}));
   const annual=[...a].sort((x,y)=>y.annual-x.annual||y.avgPts-x.avgPts);
-  const av=[...a].sort((x,y)=>avg(y)-avg(x)||y.avgPts-x.avgPts);
-  const lastAvg=av[av.length-1], lastAnnual=annual[annual.length-1], penAnnual=annual[annual.length-2];
-  const annualRel=lastAnnual.id===lastAvg.id?penAnnual:lastAnnual;
-  return {a,annual,av,lastAvg,lastAnnual,penAnnual,annualRel};
+  const av=[...a].sort((x,y)=>y.avg-x.avg||y.avgPts-x.avgPts);
+  const lastAvg=av[av.length-1];
+  const annualRel=annual[annual.length-1].id===lastAvg.id?annual[annual.length-2]:annual[annual.length-1];
+  return {a,annual,av,lastAvg,annualRel};
 }
-function renderCards(){
-  const grouped=Object.fromEntries(FOCUS.map(id=>[id,[]]));
-  FIXTURES.forEach(m=>{if(grouped[m.focus]) grouped[m.focus].push(m)});
-  document.querySelector("#cards").innerHTML=FOCUS.map(id=>{
-    const t=T[id]; const games=grouped[id]||[];
-    let projected=t.annual;
-    games.forEach(m=>{const r=P[m.id]; if(r) projected+=points[r]});
-    return `<article class="club"><div class="club-head">${crest(t)}<div class="club-name">${t.name}</div><div class="club-points">${projected}</div></div>
+function crest(t){return t.logo?`<img class="logo" src="${t.logo}" alt="">`:""}
+function render(){
+  const s=standings();
+  document.getElementById("annualRel").textContent=s.annualRel.name;
+  document.getElementById("avgRel").textContent=s.lastAvg.name;
+  document.getElementById("annual").innerHTML=s.annual.map((t,i)=>`<tr class="${t.id===s.annualRel.id?"desc ":""}${TRACKED.includes(t.id)?"focus":""}">
+    <td>${i+1}</td><td>${crest(t)}<b>${t.name}</b>${t.id===s.annualRel.id?'<span class="tag">DESC</span>':""}</td><td>${t.pj}</td><td><b>${t.annual}</b></td><td>${t.annual-BASE[t.id].annual>0?"+":""}${t.annual-BASE[t.id].annual||"—"}</td></tr>`).join("");
+  document.getElementById("avg").innerHTML=s.av.map((t,i)=>`<tr class="${t.id===s.lastAvg.id?"desc ":""}${TRACKED.includes(t.id)?"focus":""}">
+    <td>${i+1}</td><td>${crest(t)}<b>${t.name}</b>${t.id===s.lastAvg.id?'<span class="tag">DESC</span>':""}</td><td>${t.avgPts}</td><td>${t.avgPj}</td><td><b>${t.avg.toFixed(3)}</b></td></tr>`).join("");
+  document.getElementById("cards").innerHTML=TRACKED.map(id=>{
+    const t=s.a.find(x=>x.id===id); const games=FIXTURES.filter(m=>m.home===id||m.away===id).sort((a,b)=>a.round-b.round);
+    return `<article class="club"><div class="clubHead">${crest(t)}<div class="clubName">${t.name}</div><div class="pts">${t.annual}</div></div>
       ${games.map(m=>{
-        const opp=T[m.other], r=P[m.id]||"";
-        const marker=m.home===id?"L":"V";
-        return `<div class="match ${isShared(m)?"shared":""}">
-          <div class="match-line"><span class="round">F${m.round}</span><span class="venue">${marker}</span><span class="opp">${opp.name}</span></div>
+        const team=id, isHome=m.home===team, opp=BASE[isHome?m.away:m.home], a=actual[m.id];
+        const current=a? (isHome?(a==="V"?"V":a==="E"?"E":"D"):(a==="V"?"D":a==="E"?"E":"V")) :
+          (pred[m.id]? (isHome?(pred[m.id]==="V"?"V":pred[m.id]==="E"?"E":"D"):(pred[m.id]==="V"?"D":pred[m.id]==="E"?"E":"V")):"");
+        return `<div class="match"><div class="line"><span class="round">F${m.round}</span><span class="venue">${isHome?"L":"V"}</span><span class="opp">${opp.name}</span><span class="date">${m.date.slice(5)}</span>${a?'<span class="actual">FINAL</span>':""}</div>
           <div class="pick">
-            <button class="v ${r==="V"?"active":""}" onclick="setResult('${m.id}','V')">G</button>
-            <button class="e ${r==="E"?"active":""}" onclick="setResult('${m.id}','E')">E</button>
-            <button class="d ${r==="D"?"active":""}" onclick="setResult('${m.id}','D')">P</button>
-          </div>
-        </div>`
+            <button class="v ${current==="V"?"on":""}" ${a?"disabled":""} onclick="setResult('${m.id}','${team}','V')">G</button>
+            <button class="e ${current==="E"?"on":""}" ${a?"disabled":""} onclick="setResult('${m.id}','${team}','E')">E</button>
+            <button class="d ${current==="D"?"on":""}" ${a?"disabled":""} onclick="setResult('${m.id}','${team}','D')">P</button>
+          </div></div>`
       }).join("")}
     </article>`
   }).join("");
 }
-function renderTables(){
-  const s=standings(), {annual,av,lastAvg,annualRel}=s;
-  const done=Object.keys(P).filter(k=>P[k]).length;
-  document.querySelector("#progress").textContent=`${done} de ${FIXTURES.length} partidos pronosticados`;
-  document.querySelector("#relegAnnual").textContent=annualRel.name;
-  document.querySelector("#relegAvg").textContent=lastAvg.name;
-  document.querySelector("#annualReason").innerHTML=annualRel.id===lastAvg.id?"":"El último de la Anual coincide con Promedios; baja el 29.º.";
-  document.querySelector("#annual").innerHTML=annual.map((t,i)=>{
-    const d=t.annual-T[t.id].annual;
-    const desc=t.id===annualRel.id, focus=FOCUS.includes(t.id);
-    return `<tr class="${desc?"desc ":""}${focus?"focus":""}"><td>${i+1}</td><td><b>${t.name}</b>${desc?'<span class="badge">DESC</span>':""}</td><td>${t.pjAnnual}</td><td><b>${t.annual}</b></td><td class="${d>0?"up":""}">${d>0?"+"+d:"—"}</td></tr>`;
-  }).join("");
-  document.querySelector("#averages").innerHTML=av.map((t,i)=>{
-    const desc=t.id===lastAvg.id, focus=FOCUS.includes(t.id);
-    return `<tr class="${desc?"desc ":""}${focus?"focus":""}"><td>${i+1}</td><td><b>${t.name}</b>${desc?'<span class="badge">DESC</span>':""}</td><td>${t.avgPts}</td><td>${t.avgPJ}</td><td><b>${avg(t).toFixed(3)}</b></td></tr>`;
-  }).join("");
+async function syncLive(){
+  const s=document.getElementById("syncStatus");
+  s.textContent="Actualizando resultados…";
+  try{
+    const res=await fetch(apiBase,{cache:"no-store"}); if(!res.ok) throw new Error(res.status);
+    const data=await res.json();
+    let count=0;
+    for(const ev of (data.events||[])){
+      const comp=ev.competitions?.[0], cs=comp?.competitors||[];
+      if(cs.length!==2) continue;
+      const home=teamId(cs.find(c=>c.homeAway==="home")?.team?.displayName||"");
+      const away=teamId(cs.find(c=>c.homeAway==="away")?.team?.displayName||"");
+      if(!home||!away) continue;
+      const final=ev.status?.type?.completed;
+      if(!final) continue;
+      let m=FIXTURES.find(x=>x.home===home&&x.away===away);
+      if(!m) m=FIXTURES.find(x=>x.home===away&&x.away===home);
+      if(!m) continue;
+      const hc=Number(cs.find(c=>c.homeAway==="home")?.score), ac=Number(cs.find(c=>c.homeAway==="away")?.score);
+      if(Number.isNaN(hc)||Number.isNaN(ac)) continue;
+      actual[m.id]=hc>ac?"V":hc<ac?"D":"E"; count++;
+    }
+    localStorage.setItem("who-seva-actual",JSON.stringify(actual));
+    document.getElementById("syncStatus").innerHTML=`<span class="live"><span class="dot"></span> En vivo · ${count} resultados encontrados</span>`;
+    render();
+  }catch(e){
+    document.getElementById("syncStatus").textContent="Sin conexión a la fuente en vivo · usando datos guardados";
+  }
 }
-function render(){renderCards();renderTables();}
-window.setResult=(id,r)=>{P[id]=P[id]===r?"":r;render()};
-document.querySelector("#reset").onclick=()=>{Object.keys(P).forEach(k=>delete P[k]);render()};
-document.querySelector("#random").onclick=()=>{FIXTURES.forEach(m=>P[m.id]=["V","E","D"][Math.floor(Math.random()*3)]);render()};
-render();
+try{Object.assign(actual,JSON.parse(localStorage.getItem("who-seva-actual")||"{}"));}catch{}
+document.getElementById("resetBtn").onclick=()=>{Object.keys(pred).forEach(k=>delete pred[k]);Object.keys(predPerspective).forEach(k=>delete predPerspective[k]);render()};
+document.getElementById("syncBtn").onclick=syncLive;
+window.setResult=setResult;
+render(); syncLive(); setInterval(syncLive,60000);
 </script>
-</body>
-</html>
+</body></html>

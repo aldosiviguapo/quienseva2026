@@ -1,33 +1,34 @@
-# Quién se va · Simulador de descenso 2026 — V4
+# Quién se va · Simulador Argentina 2026 — V5
 
-Esta versión reemplaza la interfaz anterior por una estructura inspirada en la referencia mostrada por el usuario:
+Esta versión agrega:
 
-- tarjetas por equipo;
-- fixture en cada tarjeta;
-- botones G / E / P;
-- tablas debajo;
-- actualización inmediata;
-- regla de coincidencia anual/promedios;
-- fixture de las fechas 9 a 16 para los 7 equipos más comprometidos.
+- Newell's y Racing como equipos comprometidos, además de los 7 anteriores.
+- Un único registro por partido: los cruces entre equipos seguidos aparecen en ambas tarjetas.
+- Si elegís G/E/P en una tarjeta, el resultado se refleja automáticamente en la tarjeta del rival.
+- Resultados reales se consultan automáticamente desde el marcador público de ESPN para Argentina.
+- La página consulta toda la ventana restante de la temporada, de modo que al volver a abrirla puede recuperar resultados jugados aunque no la hayas tenido abierta.
+- Mientras la página esté abierta vuelve a consultar cada 60 segundos.
+- Los resultados reales pasan a estado FINAL y dejan bloqueados los botones.
+- Los escudos se cargan desde el CDN que usa TyC Sports para sus escudos.
 
 ## Publicación
 
-En GitHub, reemplazá **solo `index.html`** por el `index.html` de este ZIP. Esta V4 está autocontenida: no necesitás subir varios archivos.
+Reemplazá el `index.html` de tu repositorio de GitHub por este archivo. No necesitás instalar nada.
 
-## Regla de descenso implementada
+## Fuente automática
 
-Primero desciende el último de Promedios. El segundo descenso es para el último de la Tabla Anual, excluyendo al equipo ya descendido por Promedios. Por lo tanto, si ambos últimos son el mismo equipo, el segundo descenso pasa al anteúltimo de la Tabla Anual.
+La aplicación usa el endpoint público de marcador de ESPN (`site.api.espn.com`) para recuperar resultados del torneo argentino. Es una interfaz pública no oficial/documentada de ESPN; si en el futuro cambia o deja de responder, la página conserva el último snapshot guardado en el navegador.
 
-Esta lógica corresponde al artículo 93 del Estatuto de AFA y al artículo 26.2 del Reglamento de Primera División 2026.
+## Datos de corte
 
-## Corte de datos
+El snapshot base corresponde al estado previo a los dos partidos que cerraban la Fecha 8 del 7/09/2026. Las tablas iniciales fueron contrastadas con la tabla anual y la tabla de promedios publicadas el 7/09/2026.
 
-Snapshot utilizado: 7/09/2026 antes de los partidos Barracas Central–Argentinos Juniors y Unión–Instituto, con resultados publicados hasta el 6/09/2026.
+## Regla de descenso
 
-Fuentes de referencia:
-- AFA / Reglamento Primera División 2026.
-- Liga Profesional / fixture oficial 2026.
-- FutbolArgentino.com / tabla anual.
-- Radio TV Valle Viejo / tabla anual y promedios al 6/09/2026.
+1) Último de Promedios.
+2) Último de Tabla Anual.
+3) Si el mismo equipo ocupa ambas últimas posiciones, el segundo descenso pasa al anteúltimo de la Tabla Anual.
 
-Los datos quedan embebidos en el `index.html` para que GitHub Pages lo sirva como sitio estático.
+
+## Qué se actualiza automáticamente
+La aplicación ahora conserva todo el fixture restante (no solo los partidos de los nueve equipos) para que los resultados reales de cualquier encuentro de la Liga Profesional modifiquen las dos tablas. Los nueve equipos seguidos siguen siendo los únicos cuyos partidos aparecen en tarjetas de simulación.
