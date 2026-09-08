@@ -28,9 +28,7 @@ h2{color:#fff;font-size:19px;margin:16px 0 10px;text-shadow:0 2px 6px rgba(0,0,0
 .ptsLabel{font-size:11px;font-weight:700;color:var(--muted)}
 .actual{font-size:10px;background:#e4f6eb;color:#087b38;border-radius:4px;padding:3px 5px;font-weight:900;margin-left:auto}.actualScore{font-size:10px;background:#0b6e2c;color:#fff;border-radius:4px;padding:3px 6px;font-weight:900;margin-left:auto}.predTag{font-size:9px;background:#eaf1fb;color:#2563a8;border-radius:4px;padding:3px 5px;font-weight:900;margin-left:auto}.pick button:disabled{filter:saturate(.75)}
 .results{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.result{background:rgba(255,255,255,.96);border-radius:10px;padding:13px;border:1px solid var(--line)}.result small{font-size:9px;text-transform:uppercase;font-weight:800;color:var(--muted)}.result b{display:block;font-size:19px;margin-top:5px}.desc{border-color:#ff6267;background:#fff7f7}.desc b{color:#bd1d25}
-.tables{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}.box{background:rgba(255,255,255,.96);border-radius:10px;overflow:hidden;border:1px solid var(--green)}.title{font-size:18px;font-weight:800;padding:13px 14px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#e2f3e6,transparent)}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:11px}th,td{padding:8px 9px;border-bottom:1px solid #edf0f4;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}th{font-size:9px;text-transform:uppercase;color:#758296}tr.focus{background:#eefaf1}tr.desc{background:#ffe4e6}tr.promo{background:#e2e4e8}tr.promo td{color:#3d4552}.miniLogo{width:22px;height:22px;object-fit:contain;vertical-align:middle;margin-right:5px}.tag{background:#e32a35;color:#fff;padding:2px 4px;border-radius:3px;font-size:8px;font-weight:900;margin-left:4px}.tagPromo{background:#6b7788}.tagWarn{background:#f0a500;color:#241800}.incompleteRow{background:#fffaf0!important}.dataHealth{background:rgba(255,255,255,.96);border-radius:10px;border:1px solid var(--line);padding:10px 12px;margin:0 0 15px;font-size:10px}.healthTitle{font-size:11px;font-weight:900;margin-bottom:6px}.healthGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.healthItem{background:#f5f7f9;border-radius:6px;padding:6px}.healthItem b{display:block;font-size:13px}.healthGood{border-left:3px solid #0b9344}.healthBad{border-left:3px solid #e32932}.healthWarn{border-left:3px solid #f0a500}.healthList{margin:7px 0 0;padding-left:17px;color:#5b6675}.incompleteBox{margin-top:8px;padding-top:7px;border-top:1px solid #edf0f4}.legend{font-size:9px;color:#6b7788;margin:7px 0 0}.legend span{display:inline-block;margin-right:9px}
-
-.prayerSection{margin:26px auto 30px;max-width:340px}
+.tables{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}.box{background:rgba(255,255,255,.96);border-radius:10px;overflow:hidden;border:1px solid var(--green)}.title{font-size:18px;font-weight:800;padding:13px 14px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#e2f3e6,transparent)}.scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:11px}th,td{padding:8px 9px;border-bottom:1px solid #edf0f4;text-align:right;white-space:nowrap}th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}th{font-size:9px;text-transform:uppercase;color:#758296}tr.focus{background:#eefaf1}tr.desc{background:#ffe4e6}tr.promo{background:#e2e4e8}tr.promo td{color:#3d4552}.miniLogo{width:22px;height:22px;object-fit:contain;vertical-align:middle;margin-right:5px}.tag{background:#e32a35;color:#fff;padding:2px 4px;border-radius:3px;font-size:8px;font-weight:900;margin-left:4px}.tagPromo{background:#6b7788}.tagWarn{background:#f0a500;color:#241800}.incompleteRow{background:#fffaf0!important}.prayerSection{margin:26px auto 30px;max-width:340px}
 .prayerCard{background:rgba(255,255,255,.95);border:1px solid var(--gold);border-radius:10px;padding:14px 16px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}
 .prayerCard svg{width:56px;height:56px;margin-bottom:6px}
 .prayerCard h3{margin:0 0 8px;font-size:12.5px;color:var(--green-dark);letter-spacing:.3px;text-transform:uppercase;font-weight:900}
@@ -59,11 +57,10 @@ footer{color:#dfe9e2;font-size:9px;text-align:center;padding:6px 0 28px}
 </div></header>
 <main class="wrap">
 <div class="toolbar"><div class="status" id="syncStatus">Cargando datos en vivo…<div class="syncMeta" id="syncMeta">Fuente: ESPN · preparando sincronización</div></div><div class="actions"><button class="sync" id="syncBtn">↻ Actualizar ahora</button> <button class="reset" id="resetBtn">↺ Reiniciar pronósticos</button></div></div>
-<div class="dataHealth" id="dataHealth"></div>
 <h2>Simulación de resultados</h2><section class="cards" id="cards"></section>
 <section class="results"><div class="result desc"><small>Descendería por Tabla Anual</small><b id="annualRel">—</b></div><div class="result desc"><small>Descendería por Promedios</small><b id="avgRel">—</b></div></section>
-<section class="tables"><div class="box"><div class="title">Tabla Anual <small style="font-size:10px;color:#758296;font-weight:700">(puestos 20° al 30°)</small></div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>PTS</th><th>Δ</th></tr></thead><tbody id="annual"></tbody></table></div></div>
-<div class="box"><div class="title">Tabla de Promedios <small style="font-size:10px;color:#758296;font-weight:700">(puestos 20° al 30°)</small></div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>Pts</th><th>PJ</th><th>Prom.</th></tr></thead><tbody id="avg"></tbody></table></div></div></section>
+<section class="tables"><div class="box"><div class="title">Tabla Anual <small style="font-size:10px;color:#758296;font-weight:700">(zona de descenso)</small></div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>PJ</th><th>PTS</th><th>Δ</th></tr></thead><tbody id="annual"></tbody></table></div></div>
+<div class="box"><div class="title">Tabla de Promedios <small style="font-size:10px;color:#758296;font-weight:700">(zona de descenso)</small></div><div class="scroll"><table><thead><tr><th>#</th><th>Equipo</th><th>Pts</th><th>PJ</th><th>Prom.</th></tr></thead><tbody id="avg"></tbody></table></div></div></section>
 
 <section class="prayerSection"><div class="prayerCard">
 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -205,19 +202,16 @@ function currentOnly(){
 }
 function standings(){
   const a=projected().map(t=>({...t,avg:t.avgPj?t.avgPts/t.avgPj:0}));
-  const completeFirst=(x,y)=>Number(y.complete)-Number(x.complete);
-  const annual=[...a].sort((x,y)=>completeFirst(x,y)||y.annual-x.annual||y.avgPts-x.avgPts);
-  const av=[...a].sort((x,y)=>completeFirst(x,y)||y.avg-x.avg||y.avgPts-x.avgPts);
-  const completeAnnual=a.filter(t=>t.complete).sort((x,y)=>y.annual-x.annual||y.avgPts-x.avgPts);
-  const completeAvg=a.filter(t=>t.complete).sort((x,y)=>y.avg-x.avg||y.avgPts-x.avgPts);
-  const lastAvg=completeAvg[completeAvg.length-1]||null;
-  const minAnnualPts=completeAnnual.length?completeAnnual[completeAnnual.length-1].annual:null;
-  const promoTeams=minAnnualPts===null?[]:completeAnnual.filter(t=>t.annual===minAnnualPts);
+  // La tabla siempre se ordena por los puntos actuales, aunque el equipo
+  // todavía tenga partidos sin resultado. Un dato pendiente no lo hace
+  // desaparecer de la zona de descenso.
+  const annual=[...a].sort((x,y)=>y.annual-x.annual||y.avgPts-x.avgPts||x.name.localeCompare(y.name));
+  const av=[...a].sort((x,y)=>y.avg-x.avg||y.avgPts-x.avgPts||x.name.localeCompare(y.name));
+  const lastAvg=av[av.length-1]||null;
+  const minAnnualPts=annual.length?annual[annual.length-1].annual:null;
+  const promoTeams=minAnnualPts===null?[]:annual.filter(t=>t.annual===minAnnualPts);
   let annualRel=null;
-  if(promoTeams.length<2 && completeAnnual.length){
-    if(completeAnnual.length===1) annualRel=completeAnnual[0];
-    else annualRel=completeAnnual[completeAnnual.length-1].id===lastAvg?.id?completeAnnual[completeAnnual.length-2]:completeAnnual[completeAnnual.length-1];
-  }
+  if(promoTeams.length<2) annualRel=annual[annual.length-1]||null;
   return {a,annual,av,lastAvg,annualRel,promoTeams:promoTeams.length>1?promoTeams:[]};
 }
 function crest(t){return t.logo?`<img class="logo" src="${t.logo}" alt="">`:""}
@@ -240,32 +234,6 @@ function getOverdue(){
   const now=Date.now();
   return FIXTURES.filter(m=>new Date(m.date+"T23:59:59").getTime()<now&&!actual[m.id]&&!pred[m.id]);
 }
-function renderHealth(){
-  const box=document.getElementById("dataHealth"); if(!box)return;
-  const issues=validateFixtures(), overdue=getOverdue();
-  const unknown=syncMeta.unknown||[];
-  const incomplete=standings().a.filter(t=>!t.complete);
-  const problems=issues.length+overdue.length+unknown.length+(syncMeta.unmatched||0);
-  let cls=problems?"healthWarn":"healthGood";
-  let html=`<div class="healthTitle ${problems?"syncWarn":"syncOk"}">${problems?"⚠️ Control de datos":"✓ Control de datos OK"}</div>`;
-  html+=`<div class="healthGrid">
-    <div class="healthItem ${syncMeta.time?"healthGood":"healthWarn"}"><span>Última sincronización</span><b>${formatDateTime(syncMeta.time)}</b></div>
-    <div class="healthItem"><span>Resultados oficiales</span><b>${syncMeta.matched||0}</b></div>
-    <div class="healthItem ${overdue.length?"healthBad":"healthGood"}"><span>Finalizados sin cargar</span><b>${overdue.length}</b></div>
-    <div class="healthItem ${incomplete.length?"healthWarn":"healthGood"}"><span>Equipos incompletos</span><b>${incomplete.length}</b></div>
-  </div>`;
-  html+=`<div class="legend"><span>🟢 Resultado oficial</span><span>🔮 Pronóstico</span><span>⚠️ Pendiente / revisar</span></div>`;
-  if(issues.length||overdue.length||unknown.length||syncMeta.unmatched){
-    html+='<ul class="healthList">';
-    issues.slice(0,5).forEach(x=>html+=`<li>${x}</li>`);
-    overdue.slice(0,5).forEach(m=>html+=`<li>⚠️ ${BASE[m.home]?.name||m.home} - ${BASE[m.away]?.name||m.away} (F${m.round}) ya pasó y no tiene resultado ni pronóstico.</li>`);
-    unknown.slice(0,5).forEach(x=>html+=`<li>⚠️ ESPN devolvió un equipo no identificado: ${x}</li>`);
-    if(syncMeta.unmatched) html+=`<li>⚠️ ${syncMeta.unmatched} resultado(s) de ESPN no coincidieron con ningún fixture cargado.</li>`;
-    html+='</ul>';
-  }
-  if(incomplete.length){html+=`<div class="incompleteBox"><b>Partidos que faltan simular:</b> ${incomplete.map(t=>`${t.name} (${t.pending})`).join(" · ")}</div>`;}
-  box.innerHTML=html;
-}
 function render(){
   const s=standings();
   document.getElementById("annualRel").textContent=s.promoTeams.length?s.promoTeams.map(t=>t.name).join(" vs ")+" (definen por promoción)":(s.annualRel?.name||"—");
@@ -274,14 +242,14 @@ function render(){
   const promoIds=s.promoTeams.map(t=>t.id);
   document.getElementById("annual").innerHTML=s.annual.map((t,i)=>({t,i})).filter(x=>x.i+1>=RANK_FROM&&x.i+1<=RANK_TO).map(({t,i})=>{
     const isPromo=promoIds.includes(t.id), isDesc=s.annualRel&&t.id===s.annualRel.id;
-    const warn=(!TRACKED.includes(t.id)&&!t.complete)?`<span class="tag tagWarn" title="${t.pending} partido${t.pending===1?"":"s"} todavía sin jugar ni simular">⚠️ ${t.pending} PEND.</span>`:"";
-    const rowClass=(isPromo?"promo ":isDesc?"desc ":"")+((!t.complete&&!TRACKED.includes(t.id))?"incompleteRow ":"")+(TRACKED.includes(t.id)?"focus":"");
+    const warn=!t.complete?`<span class="tag tagWarn" title="${t.pending} partido${t.pending===1?"":"s"} todavía sin jugar ni simular">⚠️ ${t.pending} PEND.</span>`:"";
+    const rowClass=(isPromo?"promo ":isDesc?"desc ":"")+((!t.complete)?"incompleteRow ":"")+(TRACKED.includes(t.id)?"focus":"");
     const label=isPromo?'<span class="tag tagPromo">PROMOCIÓN</span>':(isDesc?'<span class="tag">DESC</span>':"");
     const delta=t.annual-BASE[t.id].annual;
     return `<tr class="${rowClass}"><td>${i+1}</td><td>${crest(t)}<b>${t.name}</b>${label}${warn}</td><td>${t.pj}</td><td><b>${t.annual}</b></td><td>${delta>0?"+":""}${delta||"—"}</td></tr>`}).join("");
   document.getElementById("avg").innerHTML=s.av.map((t,i)=>({t,i})).filter(x=>x.i+1>=RANK_FROM&&x.i+1<=RANK_TO).map(({t,i})=>{
-    const warn=(!TRACKED.includes(t.id)&&!t.complete)?`<span class="tag tagWarn" title="${t.pending} partido${t.pending===1?"":"s"} todavía sin jugar ni simular">⚠️ ${t.pending} PEND.</span>`:"";
-    const rowClass=(t.id===s.lastAvg?.id?"desc ":"")+((!t.complete&&!TRACKED.includes(t.id))?"incompleteRow ":"")+(TRACKED.includes(t.id)?"focus":"");
+    const warn=!t.complete?`<span class="tag tagWarn" title="${t.pending} partido${t.pending===1?"":"s"} todavía sin jugar ni simular">⚠️ ${t.pending} PEND.</span>`:"";
+    const rowClass=(t.id===s.lastAvg?.id?"desc ":"")+((!t.complete)?"incompleteRow ":"")+(TRACKED.includes(t.id)?"focus":"");
     const label=t.id===s.lastAvg?.id?'<span class="tag">DESC</span>':"";
     return `<tr class="${rowClass}"><td>${i+1}</td><td>${crest(t)}<b>${t.name}</b>${label}${warn}</td><td>${t.avgPts}</td><td>${t.avgPj}</td><td><b>${t.avg.toFixed(3)}</b></td></tr>`}).join("");
   const curPts=currentOnly();
@@ -298,7 +266,6 @@ function render(){
       }).join("")}
     </article>`;
   }).join("");
-  renderHealth();
 }
 async function syncLive(reason="manual"){
   if(syncing)return;
@@ -341,7 +308,7 @@ async function syncLive(reason="manual"){
   }catch(e){
     status.innerHTML=`<span class="syncErr">⚠️ Sin conexión con ESPN · usando los últimos datos guardados</span>`;
     meta.textContent=`Última actualización exitosa: ${formatDateTime(syncMeta.time)} · Fuente: ESPN`;
-    renderHealth();
+    render();
   }finally{syncing=false;btn.disabled=false;btn.textContent="↻ Actualizar ahora";}
 }
 try{Object.assign(actual,JSON.parse(localStorage.getItem("who-seva-actual")||"{}"));}catch{}
