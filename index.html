@@ -211,7 +211,14 @@ function standings(){
   const minAnnualPts=annual.length?annual[annual.length-1].annual:null;
   const promoTeams=minAnnualPts===null?[]:annual.filter(t=>t.annual===minAnnualPts);
   let annualRel=null;
-  if(promoTeams.length<2) annualRel=annual[annual.length-1]||null;
+  if(promoTeams.length<2){
+    // Regla del anteúltimo: si el último de la tabla anual también
+    // desciende por promedios, el descenso por anual pasa al anteúltimo.
+    const lastAnnual=annual[annual.length-1]||null;
+    annualRel=lastAnnual && lastAvg && lastAnnual.id===lastAvg.id
+      ? (annual[annual.length-2]||null)
+      : lastAnnual;
+  }
   return {a,annual,av,lastAvg,annualRel,promoTeams:promoTeams.length>1?promoTeams:[]};
 }
 function crest(t){return t.logo?`<img class="logo" src="${t.logo}" alt="">`:""}
@@ -242,13 +249,13 @@ function render(){
   const promoIds=s.promoTeams.map(t=>t.id);
   document.getElementById("annual").innerHTML=s.annual.map((t,i)=>({t,i})).filter(x=>x.i+1>=RANK_FROM&&x.i+1<=RANK_TO).map(({t,i})=>{
     const isPromo=promoIds.includes(t.id), isDesc=s.annualRel&&t.id===s.annualRel.id;
-    const warn=!t.complete?`<span class="tag tagWarn" title="${t.pending} partido${t.pending===1?"":"s"} todavía sin jugar ni simular">⚠️ ${t.pending} PEND.</span>`:"";
+    const warn=(!TRACKED.includes(t.id)&&!t.complete)?`<span class="tag tagWarn" title="${t.pending} partido${t.pending===1?"":"s"} todavía sin jugar ni simular">⚠️ ${t.pending} PEND.</span>`:"";
     const rowClass=(isPromo?"promo ":isDesc?"desc ":"")+((!t.complete)?"incompleteRow ":"")+(TRACKED.includes(t.id)?"focus":"");
     const label=isPromo?'<span class="tag tagPromo">PROMOCIÓN</span>':(isDesc?'<span class="tag">DESC</span>':"");
     const delta=t.annual-BASE[t.id].annual;
     return `<tr class="${rowClass}"><td>${i+1}</td><td>${crest(t)}<b>${t.name}</b>${label}${warn}</td><td>${t.pj}</td><td><b>${t.annual}</b></td><td>${delta>0?"+":""}${delta||"—"}</td></tr>`}).join("");
   document.getElementById("avg").innerHTML=s.av.map((t,i)=>({t,i})).filter(x=>x.i+1>=RANK_FROM&&x.i+1<=RANK_TO).map(({t,i})=>{
-    const warn=!t.complete?`<span class="tag tagWarn" title="${t.pending} partido${t.pending===1?"":"s"} todavía sin jugar ni simular">⚠️ ${t.pending} PEND.</span>`:"";
+    const warn=(!TRACKED.includes(t.id)&&!t.complete)?`<span class="tag tagWarn" title="${t.pending} partido${t.pending===1?"":"s"} todavía sin jugar ni simular">⚠️ ${t.pending} PEND.</span>`:"";
     const rowClass=(t.id===s.lastAvg?.id?"desc ":"")+((!t.complete)?"incompleteRow ":"")+(TRACKED.includes(t.id)?"focus":"");
     const label=t.id===s.lastAvg?.id?'<span class="tag">DESC</span>':"";
     return `<tr class="${rowClass}"><td>${i+1}</td><td>${crest(t)}<b>${t.name}</b>${label}${warn}</td><td>${t.avgPts}</td><td>${t.avgPj}</td><td><b>${t.avg.toFixed(3)}</b></td></tr>`}).join("");
