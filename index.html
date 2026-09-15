@@ -216,9 +216,11 @@ function standings(){
   const sameAsAvg=!!(lastAvg&&annualBottom&&lastAvg.id===annualBottom.id);
   const annualTargetIndex=sameAsAvg?annual.length-2:annual.length-1;
   const annualTarget=annual[annualTargetIndex]||null;
-  const targetPts=annualTarget?annualTarget.annual:null;
-  const promoTeams=annualTarget&&targetPts!==null
-    ?annual.filter(t=>t.annual===targetPts && t!==annualBottom)
+  // Si el segundo descenso pasa al anteúltimo, SOLO hay promoción
+  // cuando anteúltimo y antepenúltimo terminan empatados en puntos.
+  // No se fija ningún equipo (Aldosivi, Riestra, etc.): se calcula por posición.
+  const promoTeams=(sameAsAvg && annual.length>=3 && annual[annual.length-2].annual===annual[annual.length-3].annual)
+    ?[annual[annual.length-2],annual[annual.length-3]]
     :[];
   const annualRel=promoTeams.length?null:annualTarget;
   return {a,annual,av,lastAvg,annualRel,promoTeams};
@@ -264,7 +266,7 @@ function render(){
   const curPts=currentOnly();
   const orderedTracked=[...TRACKED].sort((x,y)=>curPts[y].annual-curPts[x].annual);
   document.getElementById("cards").innerHTML=orderedTracked.map(id=>{
-    const t=s.a.find(x=>x.id===id); const games=FIXTURES.filter(m=>m.home===id||m.away===id).sort((a,b)=>a.round-b.round);
+    const t=s.a.find(x=>x.id===id); const now=Date.now(); const games=FIXTURES.filter(m=>(m.home===id||m.away===id) && new Date(m.date+"T23:59:59").getTime()>=now).sort((a,b)=>a.round-b.round);
     return `<article class="club"><div class="clubHead">${crest(t)}<div class="clubName">${t.name}</div><div class="pts">${t.annual}<span class="ptsLabel"> pts</span></div></div>
       ${games.map(m=>{
         const team=id, isHome=m.home===team, opp=BASE[isHome?m.away:m.home], a=actual[m.id], p=pred[m.id], score=actualScores[m.id];
