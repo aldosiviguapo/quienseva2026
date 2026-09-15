@@ -216,15 +216,15 @@ function standings(){
   const sameAsAvg=!!(lastAvg&&annualBottom&&lastAvg.id===annualBottom.id);
   const annualTargetIndex=sameAsAvg?annual.length-2:annual.length-1;
   const annualTarget=annual[annualTargetIndex]||null;
-  // Si el último de Promedios coincide con el último de la Anual,
-  // la definición por Anual se traslada a las tres últimas posiciones.
-  // Participan de la promoción todos los equipos de esas tres posiciones
-  // que estén empatados en puntos con el anteúltimo. La regla es dinámica:
-  // no hay ningún equipo configurado de forma fija.
-  const promoTeams=(sameAsAvg && annual.length>=3 && annualTarget)
-    ?annual.slice(-3).filter(t=>t.annual===annualTarget.annual)
+  // Si el último de Promedios coincide con el último de la Anual, el
+  // segundo descenso corresponde al anteúltimo de la Tabla Anual.
+  // Solo hay PROMOCIÓN si ese anteúltimo está empatado en puntos con
+  // uno o más equipos que ocupan posiciones inmediatamente superiores.
+  // La regla es totalmente dinámica: nunca se fija un equipo concreto.
+  const promoTeams=(sameAsAvg && annualTarget)
+    ?annual.slice(0, annualTargetIndex + 1).filter(t=>t.annual===annualTarget.annual)
     :[];
-  const annualRel=promoTeams.length?null:annualTarget;
+  const annualRel=promoTeams.length>1?null:annualTarget;
   return {a,annual,av,lastAvg,annualRel,promoTeams};
 }
 function crest(t){return t.logo?`<img class="logo" src="${t.logo}" alt="">`:""}
@@ -249,12 +249,12 @@ function getOverdue(){
 }
 function render(){
   const s=standings();
-  document.getElementById("annualRel").textContent=s.promoTeams.length?s.promoTeams.map(t=>t.name).join(" vs ")+" (definen por promoción)":(s.annualRel?.name||"—");
+  document.getElementById("annualRel").textContent=s.promoTeams.length>1?s.promoTeams.map(t=>t.name).join(" vs ")+" (definen por promoción)":(s.annualRel?.name||"—");
   document.getElementById("avgRel").textContent=s.lastAvg?.name||"—";
   const RANK_FROM=20, RANK_TO=30;
   const promoIds=s.promoTeams.map(t=>t.id);
   document.getElementById("annual").innerHTML=s.annual.map((t,i)=>({t,i})).filter(x=>x.i+1>=RANK_FROM&&x.i+1<=RANK_TO).map(({t,i})=>{
-    const isPromo=promoIds.includes(t.id), isDesc=s.annualRel&&t.id===s.annualRel.id;
+    const isPromo=s.promoTeams.length>1&&promoIds.includes(t.id), isDesc=s.annualRel&&t.id===s.annualRel.id;
     const warn=(!TRACKED.includes(t.id)&&!t.complete)?`<span class="tag tagWarn" title="${t.pending} partido${t.pending===1?"":"s"} todavía sin jugar ni simular">⚠️ ${t.pending} PEND.</span>`:"";
     const rowClass=(isPromo?"promo ":isDesc?"desc ":"")+((!t.complete)?"incompleteRow ":"")+(TRACKED.includes(t.id)?"focus":"");
     const label=isPromo?'<span class="tag tagPromo">PROMOCIÓN</span>':(isDesc?'<span class="tag">DESC</span>':"");
