@@ -216,11 +216,13 @@ function standings(){
   const sameAsAvg=!!(lastAvg&&annualBottom&&lastAvg.id===annualBottom.id);
   const annualTargetIndex=sameAsAvg?annual.length-2:annual.length-1;
   const annualTarget=annual[annualTargetIndex]||null;
-  // Si el segundo descenso pasa al anteúltimo, SOLO hay promoción
-  // cuando anteúltimo y antepenúltimo terminan empatados en puntos.
-  // No se fija ningún equipo (Aldosivi, Riestra, etc.): se calcula por posición.
-  const promoTeams=(sameAsAvg && annual.length>=3 && annual[annual.length-2].annual===annual[annual.length-3].annual)
-    ?[annual[annual.length-2],annual[annual.length-3]]
+  // Si el último de Promedios coincide con el último de la Anual,
+  // la definición por Anual se traslada a las tres últimas posiciones.
+  // Participan de la promoción todos los equipos de esas tres posiciones
+  // que estén empatados en puntos con el anteúltimo. La regla es dinámica:
+  // no hay ningún equipo configurado de forma fija.
+  const promoTeams=(sameAsAvg && annual.length>=3 && annualTarget)
+    ?annual.slice(-3).filter(t=>t.annual===annualTarget.annual)
     :[];
   const annualRel=promoTeams.length?null:annualTarget;
   return {a,annual,av,lastAvg,annualRel,promoTeams};
