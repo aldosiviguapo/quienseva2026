@@ -304,14 +304,14 @@ function render(){
   document.getElementById("avgRel").textContent=s.lastAvg?.name||"—";
   const RANK_FROM=20, RANK_TO=30;
   const promoIds=s.promoTeams.map(t=>t.id);
-  document.getElementById("annual").innerHTML=s.annual.map((t,i)=>({t,i})).filter(x=>x.i+1>=RANK_FROM&&x.i+1<=RANK_TO).map(({t,i})=>{
+  document.getElementById("annual").innerHTML=s.annual.map((t,i)=>({t,i})).filter(x=>x.i+1>=RANK_FROM&&x.i+1<=RANK_TO&&!["BAN","PLA","CC"].includes(x.t.id)).map(({t,i})=>{
     const isPromo=s.promoTeams.length>1&&promoIds.includes(t.id), isDesc=s.annualRel&&t.id===s.annualRel.id;
     const warn=(!TRACKED.includes(t.id)&&!t.complete)?`<span class="tag tagWarn" title="${t.pending} partido${t.pending===1?"":"s"} todavía sin jugar ni simular">⚠️ ${t.pending} PEND.</span>`:"";
     const rowClass=(isPromo?"promo ":isDesc?"desc ":"")+((!t.complete)?"incompleteRow ":"")+(TRACKED.includes(t.id)?"focus":"");
     const label=isPromo?'<span class="tag tagPromo">PROMOCIÓN</span>':(isDesc?'<span class="tag">DESC</span>':"");
     const delta=t.annual-BASE[t.id].annual;
     return `<tr class="${rowClass}"><td>${i+1}</td><td>${crest(t)}<b>${t.name}</b>${label}${warn}</td><td>${t.pj}</td><td><b>${t.annual}</b></td><td>${delta>0?"+":""}${delta||"—"}</td></tr>`}).join("");
-  document.getElementById("avg").innerHTML=s.av.map((t,i)=>({t,i})).filter(x=>x.i+1>=RANK_FROM&&x.i+1<=RANK_TO).map(({t,i})=>{
+  document.getElementById("avg").innerHTML=s.av.map((t,i)=>({t,i})).filter(x=>x.i+1>=RANK_FROM&&x.i+1<=RANK_TO&&!["BAN","PLA","CC"].includes(x.t.id)).map(({t,i})=>{
     const warn=(!TRACKED.includes(t.id)&&!t.complete)?`<span class="tag tagWarn" title="${t.pending} partido${t.pending===1?"":"s"} todavía sin jugar ni simular">⚠️ ${t.pending} PEND.</span>`:"";
     const rowClass=(t.id===s.lastAvg?.id?"desc ":"")+((!t.complete)?"incompleteRow ":"")+(TRACKED.includes(t.id)?"focus":"");
     const label=t.id===s.lastAvg?.id?'<span class="tag">DESC</span>':"";
